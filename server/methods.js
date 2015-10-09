@@ -14,9 +14,13 @@ Meteor.methods({
 	resetUserPassword: function(userId, email) {
 		Accounts.sendResetPasswordEmail(userId, email);
 	},
+	resetNewUserPassword: function(email) {
+		var user = Accounts.findUserByEmail(email);
+		var userId = user._id;
+		Accounts.sendResetPasswordEmail(userId, email);
+	},
 	createNewUser: function(user) {
 		Accounts.createUser(user);
-		// Send Email Code
 	},
 	deleteUser: function(userId) {
 		Meteor.users.remove(userId);
