@@ -7,4 +7,9 @@ Deps.autorun(function() {
 	// Sub for admin dashboard
 	userSearchKeyword = Session.get('user-search-query');
 	usersHandle = Meteor.subscribeWithPagination('users', userSearchKeyword, 10);
+	
+	// Sub for Articles & Comments
+	articleSearchkeyword = Session.get('article-search-query');
+	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 5);
+	commentsHandle = Meteor.subscribeWithPagination("comments", 10);
 });

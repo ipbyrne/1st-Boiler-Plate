@@ -1,4 +1,5 @@
 Meteor.methods({
+	// Admin Dashboard
 	getUserCount: function () {
 		count = Meteor.users.find().count();
 		return count;
@@ -19,5 +20,54 @@ Meteor.methods({
 	},
 	deleteUser: function(userId) {
 		Meteor.users.remove(userId);
+	},
+	// Article Methods
+	articleInsert: function(title, body, thumnailURL) {
+		
+		if(Meteor.user() != null) {
+			var articleId = Articles.insert({
+				title: title,
+				body: body,
+				thumb: thumnailURL,
+				likes: 0,
+				likers: [],
+				comments: [],
+				submitted: new Date(),
+				user: Meteor.userId(),
+				useremail: Meteor.user().emails[0].address
+			});
+		}
+	},
+	articleUpdate: function(articleId, title, body, thumbnailURL) {
+		Articles.update({_id: articleId}, {$set: {
+			title:title,
+			body:body,
+			thumb: thumbnailURL}
+		});
+	},
+	likeArticle: function(articleId) {
+		Articles.update({_id:articleId}, {$inc: {likes: 1}});
+		Articles.update({_id:articleId}, {$addToSet: {likers: Meteor.userId()}});
+	},
+	unlikeArticle: function(articleId) {
+		Articles.update({_id:articleId}, {$inc: {likes: -1}});
+		Articles.update({_id:articleId}, {$pull: {likers: Meteor.userId()}});
+	},
+	deleteArticle: function(articleId) {
+		Articles.remove({_id:articleId});
+		Comments.remove({articleId: articleId});
+	},
+	// Comment Methods
+	commentInsert: function(comment) {
+		console.log(comment);
+		Comments.insert(comment);
+	},
+	likeComment: function(commentId) {
+		Comments.update({_id:commentId}, {$inc: {likes: 1}});
+		Comments.update({_id:commentId}, {$addToSet: {likers: Meteor.userId()}});
+	},
+	unlikeComment: function(commentId) {
+		Comments.update({_id:commentId}, {$inc: {likes: -1}});
+		Comments.update({_id:commentId}, {$pull: {likers: Meteor.userId()}});
 	}
 });

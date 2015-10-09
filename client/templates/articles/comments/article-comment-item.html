@@ -1,0 +1,18 @@
+<template name="articleCommentItem">
+	<div class="col-xs-12">
+		<div>
+			{{body}}
+		</div>
+		<div class="col-xs-9">
+			<div id="user" class="hide">{{useremail}}</div>
+			<img class="img-circle" width="25" src="{{gravatarImgUrl}}" />
+			<a class="">- {{useremail}}</a>, {{submitted}}
+		</div>
+		<br>
+		<div class="col-xs-3">
+			<button class="article-item-upvote pull-right btn btn-default btn-sm"><i class="fa fa-heart"></i> {{likes}}</button>
+		</div>
+		<br>
+		<hr>
+	</div>
+</template>
