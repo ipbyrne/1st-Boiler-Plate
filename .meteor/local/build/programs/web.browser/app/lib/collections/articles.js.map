@@ -1,0 +1,1 @@
+{"version":3,"sources":["meteor://💻app/lib/collections/articles.js"],"names":[],"mappings":";;;;;;;;AAAA,QAAQ,GAAG,IAAI,KAAK,CAAC,UAAU,CAAC,UAAU,CAAC,CAAC,+B","file":"/lib/collections/articles.js","sourcesContent":["Articles = new Mongo.Collection('articles');"]}

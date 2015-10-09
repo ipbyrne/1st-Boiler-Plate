@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"editArticle\");\nTemplate[\"editArticle\"] = new Template(\"Template.editArticle\", (function() {\n  var view = this;\n  return \"\";\n}));\n","bodyAttrs":{}}
