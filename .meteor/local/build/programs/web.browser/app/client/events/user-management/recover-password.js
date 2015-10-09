@@ -6,17 +6,21 @@
 //                                                                     //
 /////////////////////////////////////////////////////////////////////////
                                                                        //
-Template.recoverPassword.onRendered(function () {                      // 1
-  Modules.client.recoverPassword({                                     // 2
-    form: "#recover-password",                                         // 3
-    template: Template.instance()                                      // 4
-  });                                                                  //
-});                                                                    //
-                                                                       //
-Template.recoverPassword.events({                                      // 8
-  'submit form': function (event) {                                    // 9
-    return event.preventDefault();                                     //
-  }                                                                    //
+Template.recoverPassword.events({                                      // 1
+	'submit form': function (e) {                                         // 2
+		e.preventDefault();                                                  // 3
+		var options = {                                                      // 4
+			email: $('#forgot-password-email').val()                            // 5
+		};                                                                   //
+		Accounts.forgotPassword(options, function (error) {                  // 7
+			if (error) {                                                        // 8
+				toastr.error("Failed to send Reset Password email " + error);      // 9
+			} else {                                                            //
+				toastr.success("Password Reset Email Sent!");                      // 11
+				Router.go('/');                                                    // 12
+			}                                                                   //
+		});                                                                  //
+	}                                                                     //
 });                                                                    //
 /////////////////////////////////////////////////////////////////////////
 

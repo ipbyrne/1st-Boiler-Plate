@@ -45,11 +45,11 @@ Template["articlePage"] = new Template("Template.articlePage", (function() {
   }, "by ", Blaze.View("lookup:useremail", function() {
     return Spacebars.mustache(view.lookup("useremail"));
   })), "   ", HTML.BUTTON({
-    "class": "article-item-upvote btn btn-default btn-sm"
+    "class": "article-item-upvote btn btn-default"
   }, HTML.Raw('<i class="fa fa-heart"></i>'), " ", Blaze.View("lookup:likes", function() {
     return Spacebars.mustache(view.lookup("likes"));
   })), "   ", HTML.BUTTON({
-    "class": "article-item-comment btn btn-default btn-sm",
+    "class": "article-item-comment btn btn-default",
     href: "#"
   }, HTML.Raw('<i class="fa fa-comment"></i>'), " ", Blaze.View("lookup:commentCount", function() {
     return Spacebars.mustache(view.lookup("commentCount"));
@@ -79,15 +79,7 @@ Template["articlePage"] = new Template("Template.articlePage", (function() {
     return Spacebars.call(view.lookup("comments"));
   }, function() {
     return [ "\n				", Spacebars.include(view.lookupTemplate("articleCommentItem")), "\n			" ];
-  }), "\n		"), "\n		", HTML.DIV({
-    "class": "col-xs-12 text-center"
-  }, "\n			", HTML.Raw("<br>"), "\n			", HTML.Raw("<br>"), "\n			", Blaze.If(function() {
-    return Spacebars.call(view.lookup("commentLimitReached"));
-  }, function() {
-    return [ "\n				", HTML.BUTTON({
-      "class": "btn btn-primary load-more"
-    }, "Load More"), "\n			" ];
-  }), "\n			", HTML.Raw("<br>"), "\n			", HTML.Raw("<br>"), "\n		"), "\n		", HTML.DIV({
+  }), "\n		"), HTML.Raw('\n		<!-- Show If Comments Are Subscribed with Pagination \n		<div class="col-xs-12 text-center">\n			<br>\n			<br>\n			{{#if commentLimitReached}}\n				<button class="btn btn-primary load-more">Load More</button>\n			{{/if}}\n			<br>\n			<br>\n		</div>\n		-->\n		'), HTML.DIV({
     "class": "col-xs-12"
   }, "\n			", Blaze.If(function() {
     return Spacebars.call(view.lookup("currentUser"));
@@ -97,7 +89,7 @@ Template["articlePage"] = new Template("Template.articlePage", (function() {
     return [ "\n				", HTML.SPAN("You must be ", HTML.A({
       href: "/sign-in"
     }, HTML.STRONG("logged")), " in to comment."), "\n			" ];
-  }), "			\n		"), "\n	");
+  }), "	\n			", HTML.Raw("<br>"), "\n			", HTML.Raw("<br>"), "\n		"), "\n	");
 }));
 
 }).call(this);

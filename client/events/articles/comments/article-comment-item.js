@@ -9,5 +9,16 @@ Template.articleCommentItem.events({
 		} else {
 			Meteor.call('likeComment', this._id);
 		}	
+	},
+	'click button.delete-comment': function() {
+		if(confirm('Are you sure?')) {
+			Meteor.call('deleteComment', this._id, function(error) {
+				if(error) {
+					toastr.error("Failed to Delete... " + error);
+				} else {
+					toastr.success("Comment Deleted.");
+				}
+			})
+		}
 	}
 });

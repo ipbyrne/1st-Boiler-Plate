@@ -23,20 +23,17 @@ Meteor.methods({
 	},
 	// Article Methods
 	articleInsert: function(title, body, thumnailURL) {
-		
-		if(Meteor.user() != null) {
-			var articleId = Articles.insert({
-				title: title,
-				body: body,
-				thumb: thumnailURL,
-				likes: 0,
-				likers: [],
-				comments: [],
-				submitted: new Date(),
-				user: Meteor.userId(),
-				useremail: Meteor.user().emails[0].address
-			});
-		}
+		var articleId = Articles.insert({
+			title: title,
+			body: body,
+			thumb: thumnailURL,
+			likes: 0,
+			likers: [],
+			comments: [],
+			submitted: new Date(),
+			user: Meteor.userId(),
+			useremail: Meteor.user().emails[0].address
+		});
 	},
 	articleUpdate: function(articleId, title, body, thumbnailURL) {
 		Articles.update({_id: articleId}, {$set: {
@@ -59,7 +56,6 @@ Meteor.methods({
 	},
 	// Comment Methods
 	commentInsert: function(comment) {
-		console.log(comment);
 		Comments.insert(comment);
 	},
 	likeComment: function(commentId) {
@@ -69,5 +65,8 @@ Meteor.methods({
 	unlikeComment: function(commentId) {
 		Comments.update({_id:commentId}, {$inc: {likes: -1}});
 		Comments.update({_id:commentId}, {$pull: {likers: Meteor.userId()}});
+	},
+	deleteComment: function(commentId) {
+		Comments.remove({_id: commentId});
 	}
 });

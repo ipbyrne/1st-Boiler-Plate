@@ -10,7 +10,12 @@
 		</div>
 		<br>
 		<div class="col-xs-3">
-			<button class="article-item-upvote pull-right btn btn-default btn-sm"><i class="fa fa-heart"></i> {{likes}}</button>
+			<div class="btn-group pull-right">
+				<a><button class="article-item-upvote btn btn-default"><i class="fa fa-heart"></i> {{likes}}</button></a>
+				{{#if itemBelongsToYou}}
+					<a href="#"><button class="btn btn-danger delete-comment">Delete</button></a>
+				{{/if}}
+			</div>
 		</div>
 		<br>
 		<hr>

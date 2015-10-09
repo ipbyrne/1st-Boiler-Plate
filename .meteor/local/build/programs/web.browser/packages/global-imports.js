@@ -20,6 +20,7 @@ Random = Package.random.Random;
 moment = Package['momentjs:moment'].moment;
 Showdown = Package.markdown.Showdown;
 Gravatar = Package['jparker:gravatar'].Gravatar;
+Counts = Package['tmeasday:publish-counts'].Counts;
 Meteor = Package.meteor.Meteor;
 WebApp = Package.webapp.WebApp;
 _ = Package.underscore._;

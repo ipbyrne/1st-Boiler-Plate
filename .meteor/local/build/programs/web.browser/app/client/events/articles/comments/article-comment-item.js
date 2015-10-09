@@ -17,6 +17,17 @@ Template.articleCommentItem.events({                                   // 1
 		} else {                                                             //
 			Meteor.call('likeComment', this._id);                               // 10
 		}                                                                    //
+	},                                                                    //
+	'click button.delete-comment': function () {                          // 13
+		if (confirm('Are you sure?')) {                                      // 14
+			Meteor.call('deleteComment', this._id, function (error) {           // 15
+				if (error) {                                                       // 16
+					toastr.error("Failed to Delete... " + error);                     // 17
+				} else {                                                           //
+					toastr.success("Comment Deleted.");                               // 19
+				}                                                                  //
+			});                                                                 //
+		}                                                                    //
 	}                                                                     //
 });                                                                    //
 /////////////////////////////////////////////////////////////////////////

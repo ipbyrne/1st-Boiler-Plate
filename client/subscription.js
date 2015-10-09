@@ -11,5 +11,8 @@ Deps.autorun(function() {
 	// Sub for Articles & Comments
 	articleSearchkeyword = Session.get('article-search-query');
 	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 5);
-	commentsHandle = Meteor.subscribeWithPagination("comments", 10);
+	// Subscribe with Pagination
+	//commentsHandle = Meteor.subscribeWithPagination("comments", 10);
+	// Subscribe with out Pagination to get comment Counts.
+	Meteor.subscribe('comments');
 });

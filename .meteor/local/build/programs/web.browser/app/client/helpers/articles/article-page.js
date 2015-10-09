@@ -10,7 +10,7 @@
 Template.articlePage.helpers({                                         // 2
 	comments: function () {                                               // 3
 		Session.set('articleId', this._id);                                  // 4
-		return Comments.find({});                                            // 5
+		return Comments.find({}, { sort: { submitted: 1 } });                // 5
 	},                                                                    //
 	commentCount: function () {                                           // 7
 		return Comments.find({ articleId: this._id }).count();               // 8

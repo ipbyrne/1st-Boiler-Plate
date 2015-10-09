@@ -7,7 +7,11 @@ Template["adminDashboard"] = new Template("Template.adminDashboard", (function()
   }, function() {
     return [ "\n		", Spacebars.include(view.lookupTemplate("sendInvitationModal")), "\n	\n		", HTML.H4({
       "class": "page-header"
-    }, "Users"), "\n		", HTML.DIV({
+    }, "Users"), "\n		", HTML.P("There are ", Blaze.View("lookup:getPublishedCount", function() {
+      return Spacebars.mustache(view.lookup("getPublishedCount"), "users");
+    }), " users and ", Blaze.View("lookup:getPublishedCount", function() {
+      return Spacebars.mustache(view.lookup("getPublishedCount"), "articles");
+    }), " articles."), "\n		", HTML.DIV({
       "class": "col-sm-9"
     }, "\n			", HTML.INPUT({
       type: "text",

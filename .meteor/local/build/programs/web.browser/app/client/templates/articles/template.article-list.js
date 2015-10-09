@@ -8,7 +8,21 @@ Template["articleList"] = new Template("Template.articleList", (function() {
     "class": "row"
   }, "\n			", HTML.DIV({
     "class": "col-xs-12"
-  }, "\n				", HTML.Raw('<div class="col-sm-9">\n					<input type="text" name="searchbar" class="search-bar fa form-control" placeholder="&#xF002;    Search Articles">\n					<br>\n					<br>\n				</div>'), "\n				", HTML.Raw('<div class="col-sm-3 text-center">\n					<a href="/submit-article"><button class="btn btn-success">Submit Article</button></a>\n					<br>\n					<br>\n				</div>'), "\n				", HTML.Raw("<br>"), "\n				", HTML.Raw("<br>"), "\n				", HTML.Raw("<br>"), "\n				", Blaze.Each(function() {
+  }, "\n				", HTML.Raw('<div class="col-sm-9">\n					<input type="text" name="searchbar" class="search-bar fa form-control" placeholder="&#xF002;    Search Articles">\n					<br>\n					<br>\n				</div>'), "\n				", HTML.DIV({
+    "class": "col-sm-3 text-center"
+  }, "\n					", Blaze.If(function() {
+    return Spacebars.call(view.lookup("currentUser"));
+  }, function() {
+    return [ "\n					", HTML.A({
+      href: "/submit-article"
+    }, HTML.BUTTON({
+      "class": "btn btn-success"
+    }, "Submit Article")), "\n					" ];
+  }, function() {
+    return [ "\n						", HTML.P("Please ", HTML.A({
+      href: "/sign-in"
+    }, "Log In"), " to submit an article."), "\n					" ];
+  }), "\n					", HTML.Raw("<br>"), "\n					", HTML.Raw("<br>"), "\n				"), "\n				", HTML.Raw("<br>"), "\n				", HTML.Raw("<br>"), "\n				", HTML.Raw("<br>"), "\n				", Blaze.Each(function() {
     return Spacebars.call(view.lookup("articles"));
   }, function() {
     return [ "\n					", Spacebars.include(view.lookupTemplate("articleItem")), "\n				" ];

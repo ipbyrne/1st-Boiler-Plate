@@ -29,7 +29,6 @@ Template.articlePage.events({
 		console.log('test');
 	},
 	'click .delete-article': function() {
-		console.log('test');
 		if(confirm('Are you sure?')) {
 			Meteor.call('deleteArticle', this._id, function(error) {
 				if(error) {

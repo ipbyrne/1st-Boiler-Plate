@@ -6,7 +6,15 @@ Template["dashboard"] = new Template("Template.dashboard", (function() {
     "class": "container"
   }, "\n		", HTML.DIV({
     "class": "col-md-12"
-  }, "\n			", HTML.Raw("<h3>Dashboard</h3>"), "\n			", Spacebars.include(view.lookupTemplate("adminDashboard")), "\n		"), "\n	");
+  }, "\n			", Blaze.If(function() {
+    return Spacebars.call(view.lookup("isAdmin"));
+  }, function() {
+    return [ "\n				", HTML.H3("Dashboard"), "\n				", Spacebars.include(view.lookupTemplate("adminDashboard")), "\n			" ];
+  }, function() {
+    return [ "\n				", HTML.H1("Whoops, you belong to here! Time to head ", HTML.A({
+      href: "/"
+    }, "home!")), "\n			" ];
+  }), "\n		"), "\n	");
 }));
 
 }).call(this);

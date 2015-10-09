@@ -1,1 +1,0 @@
-{"head":"","body":"","js":"\nTemplate.__checkName(\"sendInvitationModal\");\nTemplate[\"sendInvitationModal\"] = new Template(\"Template.sendInvitationModal\", (function() {\n  var view = this;\n  return \"\";\n}));\n","bodyAttrs":{}}

@@ -2,7 +2,7 @@
 Template.articlePage.helpers({
 	comments: function() {
 		Session.set('articleId', this._id);
-		return Comments.find({});
+		return Comments.find({}, {sort:{submitted: 1}});
 	},
 	commentCount: function() {
 		return Comments.find({articleId: this._id}).count();

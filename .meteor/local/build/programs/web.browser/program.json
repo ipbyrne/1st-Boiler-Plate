@@ -816,6 +816,17 @@
       "hash": "496420bf3c732b8c677bf0b1bbf24e0f2f196b42"
     },
     {
+      "path": "packages/tmeasday_publish-counts.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/tmeasday_publish-counts.js?f9554ca2a94975e733097729e42109dc37224bd0",
+      "sourceMap": "packages/tmeasday_publish-counts.js.map",
+      "sourceMapUrl": "/packages/f9554ca2a94975e733097729e42109dc37224bd0.map",
+      "size": 4249,
+      "hash": "f9554ca2a94975e733097729e42109dc37224bd0"
+    },
+    {
       "path": "packages/webapp.js",
       "where": "client",
       "type": "js",
@@ -875,20 +886,20 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/global-imports.js?83208a4d101c13d7568ba58536ed774a184031c7",
-      "size": 1456,
-      "hash": "83208a4d101c13d7568ba58536ed774a184031c7"
+      "url": "/packages/global-imports.js?5cdd8a2be53ccdf9d2b433eca1b013e740283725",
+      "size": 1508,
+      "hash": "5cdd8a2be53ccdf9d2b433eca1b013e740283725"
     },
     {
       "path": "app/client/templates/articles/comments/template.article-comment-item.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/articles/comments/template.article-comment-item.js?37afc3ae9bdd31508310c491296bb9cc0efd4a33",
+      "url": "/app/client/templates/articles/comments/template.article-comment-item.js?0f28dbd2722f2cd5d571441464afeb28499e01f7",
       "sourceMap": "app/client/templates/articles/comments/template.article-comment-item.js.map",
-      "sourceMapUrl": "/app/client/templates/articles/comments/37afc3ae9bdd31508310c491296bb9cc0efd4a33.map",
-      "size": 1376,
-      "hash": "37afc3ae9bdd31508310c491296bb9cc0efd4a33"
+      "sourceMapUrl": "/app/client/templates/articles/comments/0f28dbd2722f2cd5d571441464afeb28499e01f7.map",
+      "size": 1702,
+      "hash": "0f28dbd2722f2cd5d571441464afeb28499e01f7"
     },
     {
       "path": "app/client/templates/articles/comments/template.article-comment-submit.js",
@@ -906,11 +917,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/user-management/admin-dashboard/template.admin-dashboard.js?d63a4cb4c5621aa88f33c997caaf02283291722d",
+      "url": "/app/client/templates/user-management/admin-dashboard/template.admin-dashboard.js?2907ff8607968de48798ba73a61b05e20c09577e",
       "sourceMap": "app/client/templates/user-management/admin-dashboard/template.admin-dashboard.js.map",
-      "sourceMapUrl": "/app/client/templates/user-management/admin-dashboard/d63a4cb4c5621aa88f33c997caaf02283291722d.map",
-      "size": 3425,
-      "hash": "d63a4cb4c5621aa88f33c997caaf02283291722d"
+      "sourceMapUrl": "/app/client/templates/user-management/admin-dashboard/2907ff8607968de48798ba73a61b05e20c09577e.map",
+      "size": 3759,
+      "hash": "2907ff8607968de48798ba73a61b05e20c09577e"
     },
     {
       "path": "app/client/templates/user-management/admin-dashboard/template.admins.js",
@@ -972,44 +983,44 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/articles/template.article-list.js?f4f210242430def5ffdfe16670ce65cc0868173a",
+      "url": "/app/client/templates/articles/template.article-list.js?1c00d7a7c2a732c14cbbc2442c1e4e5c2d1457fa",
       "sourceMap": "app/client/templates/articles/template.article-list.js.map",
-      "sourceMapUrl": "/app/client/templates/articles/f4f210242430def5ffdfe16670ce65cc0868173a.map",
-      "size": 1320,
-      "hash": "f4f210242430def5ffdfe16670ce65cc0868173a"
+      "sourceMapUrl": "/app/client/templates/articles/1c00d7a7c2a732c14cbbc2442c1e4e5c2d1457fa.map",
+      "size": 1687,
+      "hash": "1c00d7a7c2a732c14cbbc2442c1e4e5c2d1457fa"
     },
     {
       "path": "app/client/templates/articles/template.article-page.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/articles/template.article-page.js?99cd66998a25fe42c07c433eed72532bb1707bd2",
+      "url": "/app/client/templates/articles/template.article-page.js?931cb0af05f088eb07df7912ba5e1c6521b9db7a",
       "sourceMap": "app/client/templates/articles/template.article-page.js.map",
-      "sourceMapUrl": "/app/client/templates/articles/99cd66998a25fe42c07c433eed72532bb1707bd2.map",
-      "size": 4199,
-      "hash": "99cd66998a25fe42c07c433eed72532bb1707bd2"
+      "sourceMapUrl": "/app/client/templates/articles/931cb0af05f088eb07df7912ba5e1c6521b9db7a.map",
+      "size": 4098,
+      "hash": "931cb0af05f088eb07df7912ba5e1c6521b9db7a"
     },
     {
       "path": "app/client/templates/articles/template.edit-article.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/articles/template.edit-article.js?d7bcba9ab825dce934b0bbdda7229f2c14ce3e6e",
+      "url": "/app/client/templates/articles/template.edit-article.js?f84e8921af78f62d8f629653f9020ffaa893d5cc",
       "sourceMap": "app/client/templates/articles/template.edit-article.js.map",
-      "sourceMapUrl": "/app/client/templates/articles/d7bcba9ab825dce934b0bbdda7229f2c14ce3e6e.map",
-      "size": 1294,
-      "hash": "d7bcba9ab825dce934b0bbdda7229f2c14ce3e6e"
+      "sourceMapUrl": "/app/client/templates/articles/f84e8921af78f62d8f629653f9020ffaa893d5cc.map",
+      "size": 1622,
+      "hash": "f84e8921af78f62d8f629653f9020ffaa893d5cc"
     },
     {
       "path": "app/client/templates/articles/template.submit-article.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/articles/template.submit-article.js?f8efc5f1bf281cbfc21d1531f9029e3557c50fcd",
+      "url": "/app/client/templates/articles/template.submit-article.js?f541a368e6741aae15b461a4aed09a9234c09919",
       "sourceMap": "app/client/templates/articles/template.submit-article.js.map",
-      "sourceMapUrl": "/app/client/templates/articles/f8efc5f1bf281cbfc21d1531f9029e3557c50fcd.map",
-      "size": 646,
-      "hash": "f8efc5f1bf281cbfc21d1531f9029e3557c50fcd"
+      "sourceMapUrl": "/app/client/templates/articles/f541a368e6741aae15b461a4aed09a9234c09919.map",
+      "size": 1183,
+      "hash": "f541a368e6741aae15b461a4aed09a9234c09919"
     },
     {
       "path": "app/client/templates/globals/template.loading.js",
@@ -1038,11 +1049,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/layout/template.dashboard.js?360785c1f17811eab4232ea0b3ae2a82254e6bce",
+      "url": "/app/client/templates/layout/template.dashboard.js?cfc935d5824533e71a90ffecb1fba19cdce9047b",
       "sourceMap": "app/client/templates/layout/template.dashboard.js.map",
-      "sourceMapUrl": "/app/client/templates/layout/360785c1f17811eab4232ea0b3ae2a82254e6bce.map",
-      "size": 385,
-      "hash": "360785c1f17811eab4232ea0b3ae2a82254e6bce"
+      "sourceMapUrl": "/app/client/templates/layout/cfc935d5824533e71a90ffecb1fba19cdce9047b.map",
+      "size": 655,
+      "hash": "cfc935d5824533e71a90ffecb1fba19cdce9047b"
     },
     {
       "path": "app/client/templates/layout/template.home.js",
@@ -1060,22 +1071,22 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/user-management/template.recover-password.js?9fd503696936e2fe69ce1fa4e8817082c5d9da5c",
+      "url": "/app/client/templates/user-management/template.recover-password.js?0110437ec82b6dd85385a99c294465fcdf08889c",
       "sourceMap": "app/client/templates/user-management/template.recover-password.js.map",
-      "sourceMapUrl": "/app/client/templates/user-management/9fd503696936e2fe69ce1fa4e8817082c5d9da5c.map",
-      "size": 830,
-      "hash": "9fd503696936e2fe69ce1fa4e8817082c5d9da5c"
+      "sourceMapUrl": "/app/client/templates/user-management/0110437ec82b6dd85385a99c294465fcdf08889c.map",
+      "size": 857,
+      "hash": "0110437ec82b6dd85385a99c294465fcdf08889c"
     },
     {
       "path": "app/client/templates/user-management/template.reset-password.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/user-management/template.reset-password.js?1736fe4db95a28590b3de5e443ed35d5dc745967",
+      "url": "/app/client/templates/user-management/template.reset-password.js?4f3099cfa10b8a409f8648dd2462da972bf78582",
       "sourceMap": "app/client/templates/user-management/template.reset-password.js.map",
-      "sourceMapUrl": "/app/client/templates/user-management/1736fe4db95a28590b3de5e443ed35d5dc745967.map",
-      "size": 1044,
-      "hash": "1736fe4db95a28590b3de5e443ed35d5dc745967"
+      "sourceMapUrl": "/app/client/templates/user-management/4f3099cfa10b8a409f8648dd2462da972bf78582.map",
+      "size": 1155,
+      "hash": "4f3099cfa10b8a409f8648dd2462da972bf78582"
     },
     {
       "path": "app/client/templates/user-management/template.sign-in.js",
@@ -1093,22 +1104,22 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/templates/user-management/template.sign-up.js?f4b3e0ec1c2abb05e1c1aa3016e482fabcfc5847",
+      "url": "/app/client/templates/user-management/template.sign-up.js?b97b93270999fd99fd80b8c8121b155a34b133da",
       "sourceMap": "app/client/templates/user-management/template.sign-up.js.map",
-      "sourceMapUrl": "/app/client/templates/user-management/f4b3e0ec1c2abb05e1c1aa3016e482fabcfc5847.map",
-      "size": 915,
-      "hash": "f4b3e0ec1c2abb05e1c1aa3016e482fabcfc5847"
+      "sourceMapUrl": "/app/client/templates/user-management/b97b93270999fd99fd80b8c8121b155a34b133da.map",
+      "size": 919,
+      "hash": "b97b93270999fd99fd80b8c8121b155a34b133da"
     },
     {
       "path": "app/template.application.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/template.application.js?40e350c3e15cb6fb4a3a7afe9c7228d89dbb63b2",
+      "url": "/app/template.application.js?c57c87a2e69ef0e506e7901db44258bea6850185",
       "sourceMap": "app/template.application.js.map",
-      "sourceMapUrl": "/app/40e350c3e15cb6fb4a3a7afe9c7228d89dbb63b2.map",
-      "size": 2833,
-      "hash": "40e350c3e15cb6fb4a3a7afe9c7228d89dbb63b2"
+      "sourceMapUrl": "/app/c57c87a2e69ef0e506e7901db44258bea6850185.map",
+      "size": 3131,
+      "hash": "c57c87a2e69ef0e506e7901db44258bea6850185"
     },
     {
       "path": "app/lib/collections/articles.js",
@@ -1148,11 +1159,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/events/articles/comments/article-comment-item.js?7171fd0b9a2383ae5ff137c7cceb115d673004cb",
+      "url": "/app/client/events/articles/comments/article-comment-item.js?b26b3934dd4d145541a233e69c61fa7d79e8b806",
       "sourceMap": "app/client/events/articles/comments/article-comment-item.js.map",
-      "sourceMapUrl": "/app/client/events/articles/comments/7171fd0b9a2383ae5ff137c7cceb115d673004cb.map",
-      "size": 1527,
-      "hash": "7171fd0b9a2383ae5ff137c7cceb115d673004cb"
+      "sourceMapUrl": "/app/client/events/articles/comments/b26b3934dd4d145541a233e69c61fa7d79e8b806.map",
+      "size": 2359,
+      "hash": "b26b3934dd4d145541a233e69c61fa7d79e8b806"
     },
     {
       "path": "app/client/events/articles/comments/article-comment-submit.js",
@@ -1225,11 +1236,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/events/articles/article-page.js?3fd06a039cf7e264ad7534c305be9e9cb1e9c2b0",
+      "url": "/app/client/events/articles/article-page.js?57780a14065877e829ada2ebd8bc8d9740ac5f3c",
       "sourceMap": "app/client/events/articles/article-page.js.map",
-      "sourceMapUrl": "/app/client/events/articles/3fd06a039cf7e264ad7534c305be9e9cb1e9c2b0.map",
-      "size": 3873,
-      "hash": "3fd06a039cf7e264ad7534c305be9e9cb1e9c2b0"
+      "sourceMapUrl": "/app/client/events/articles/57780a14065877e829ada2ebd8bc8d9740ac5f3c.map",
+      "size": 3796,
+      "hash": "57780a14065877e829ada2ebd8bc8d9740ac5f3c"
     },
     {
       "path": "app/client/events/articles/edit-article.js",
@@ -1247,11 +1258,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/events/articles/submit-article.js?7c2e9e75285b2b3720fa69e0884945a04ff8d0e4",
+      "url": "/app/client/events/articles/submit-article.js?441af3fd842f2105ef0c8e9ce9a0221385e28f02",
       "sourceMap": "app/client/events/articles/submit-article.js.map",
-      "sourceMapUrl": "/app/client/events/articles/7c2e9e75285b2b3720fa69e0884945a04ff8d0e4.map",
-      "size": 1609,
-      "hash": "7c2e9e75285b2b3720fa69e0884945a04ff8d0e4"
+      "sourceMapUrl": "/app/client/events/articles/441af3fd842f2105ef0c8e9ce9a0221385e28f02.map",
+      "size": 2139,
+      "hash": "441af3fd842f2105ef0c8e9ce9a0221385e28f02"
     },
     {
       "path": "app/client/events/user-management/application.js",
@@ -1269,22 +1280,22 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/events/user-management/recover-password.js?00774a3449faa63747d473885284ec4ff94fb302",
+      "url": "/app/client/events/user-management/recover-password.js?398badc06af5a852b317c32d4d8d57e84c7b115f",
       "sourceMap": "app/client/events/user-management/recover-password.js.map",
-      "sourceMapUrl": "/app/client/events/user-management/00774a3449faa63747d473885284ec4ff94fb302.map",
-      "size": 1448,
-      "hash": "00774a3449faa63747d473885284ec4ff94fb302"
+      "sourceMapUrl": "/app/client/events/user-management/398badc06af5a852b317c32d4d8d57e84c7b115f.map",
+      "size": 1754,
+      "hash": "398badc06af5a852b317c32d4d8d57e84c7b115f"
     },
     {
       "path": "app/client/events/user-management/reset-password.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/events/user-management/reset-password.js?6ed63f9be22c33492aaaac4a423857ad76cd0098",
+      "url": "/app/client/events/user-management/reset-password.js?1109fcb22b686dd406ee0c0eae256298c1966a12",
       "sourceMap": "app/client/events/user-management/reset-password.js.map",
-      "sourceMapUrl": "/app/client/events/user-management/6ed63f9be22c33492aaaac4a423857ad76cd0098.map",
-      "size": 1448,
-      "hash": "6ed63f9be22c33492aaaac4a423857ad76cd0098"
+      "sourceMapUrl": "/app/client/events/user-management/1109fcb22b686dd406ee0c0eae256298c1966a12.map",
+      "size": 2129,
+      "hash": "1109fcb22b686dd406ee0c0eae256298c1966a12"
     },
     {
       "path": "app/client/events/user-management/sign-in.js",
@@ -1346,11 +1357,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/helpers/articles/article-page.js?94c16ce7a2a4a8e3a0b63e1f5c251c854179b480",
+      "url": "/app/client/helpers/articles/article-page.js?c0d42b619ab65a64eb673e3ea496078804bdd7bf",
       "sourceMap": "app/client/helpers/articles/article-page.js.map",
-      "sourceMapUrl": "/app/client/helpers/articles/94c16ce7a2a4a8e3a0b63e1f5c251c854179b480.map",
+      "sourceMapUrl": "/app/client/helpers/articles/c0d42b619ab65a64eb673e3ea496078804bdd7bf.map",
       "size": 1680,
-      "hash": "94c16ce7a2a4a8e3a0b63e1f5c251c854179b480"
+      "hash": "c0d42b619ab65a64eb673e3ea496078804bdd7bf"
     },
     {
       "path": "app/client/helpers/articles/edit-article-onrender.js",
@@ -1412,11 +1423,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/client/subscription.js?abf8c6592cbdb19791014bf2880bcbfbb3e8f834",
+      "url": "/app/client/subscription.js?df56ff71854e66262c9cf83429295ebccf93915e",
       "sourceMap": "app/client/subscription.js.map",
-      "sourceMapUrl": "/app/client/abf8c6592cbdb19791014bf2880bcbfbb3e8f834.map",
-      "size": 1690,
-      "hash": "abf8c6592cbdb19791014bf2880bcbfbb3e8f834"
+      "sourceMapUrl": "/app/client/df56ff71854e66262c9cf83429295ebccf93915e.map",
+      "size": 1912,
+      "hash": "df56ff71854e66262c9cf83429295ebccf93915e"
     },
     {
       "path": "packages/service-configuration.js",

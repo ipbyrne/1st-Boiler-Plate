@@ -27,11 +27,21 @@ Template["articleCommentItem"] = new Template("Template.articleCommentItem", (fu
     return Spacebars.mustache(view.lookup("submitted"));
   }), "\n		"), HTML.Raw("\n		<br>\n		"), HTML.DIV({
     "class": "col-xs-3"
-  }, "\n			", HTML.BUTTON({
-    "class": "article-item-upvote pull-right btn btn-default btn-sm"
+  }, "\n			", HTML.DIV({
+    "class": "btn-group pull-right"
+  }, "\n				", HTML.A(HTML.BUTTON({
+    "class": "article-item-upvote btn btn-default"
   }, HTML.Raw('<i class="fa fa-heart"></i>'), " ", Blaze.View("lookup:likes", function() {
     return Spacebars.mustache(view.lookup("likes"));
-  })), "\n		"), HTML.Raw("\n		<br>\n		<hr>\n	"));
+  }))), "\n				", Blaze.If(function() {
+    return Spacebars.call(view.lookup("itemBelongsToYou"));
+  }, function() {
+    return [ "\n					", HTML.A({
+      href: "#"
+    }, HTML.BUTTON({
+      "class": "btn btn-danger delete-comment"
+    }, "Delete")), "\n				" ];
+  }), "\n			"), "\n		"), HTML.Raw("\n		<br>\n		<hr>\n	"));
 }));
 
 }).call(this);

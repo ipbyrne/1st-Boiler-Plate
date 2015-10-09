@@ -40,7 +40,9 @@ Template.body.addContent((function() {
     })), "\n							", HTML.UL({
       "class": "dropdown-menu",
       role: "menu"
-    }, "\n								", HTML.LI({
+    }, "\n								", HTML.LI(HTML.A({
+      href: "/reset-password"
+    }, "Change Password")), "\n								", HTML.LI({
       "class": "logout"
     }, HTML.A({
       href: "#"
@@ -50,6 +52,12 @@ Template.body.addContent((function() {
       "class": "collapse navbar-collapse",
       id: "bs-example-navbar-collapse-1"
     }, "\n					", HTML.UL({
+      "class": "nav navbar-nav"
+    }, "\n						", HTML.LI(HTML.A({
+      href: "/"
+    }, "Index")), "\n						", HTML.LI(HTML.A({
+      href: "/articles"
+    }, "Articles")), "\n					"), "\n					", HTML.UL({
       "class": "nav navbar-nav navbar-right"
     }, "\n						", HTML.LI(HTML.A({
       href: "/sign-up"

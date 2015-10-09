@@ -350,6 +350,10 @@
       "path": "packages/jparker_gravatar.js"
     },
     {
+      "sourceMap": "packages/tmeasday_publish-counts.js.map",
+      "path": "packages/tmeasday_publish-counts.js"
+    },
+    {
       "sourceMap": "packages/livedata.js.map",
       "path": "packages/livedata.js"
     },
@@ -403,6 +407,13 @@
     {
       "sourceMap": "app/server/publication.js.map",
       "path": "app/server/publication.js",
+      "assets": {
+        "email/templates/.gitignore": "assets/app/email/templates/.gitignore"
+      }
+    },
+    {
+      "sourceMap": "app/server/startup.js.map",
+      "path": "app/server/startup.js",
       "assets": {
         "email/templates/.gitignore": "assets/app/email/templates/.gitignore"
       }

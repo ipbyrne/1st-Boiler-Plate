@@ -8,7 +8,11 @@
 					<br>
 				</div>
 				<div class="col-sm-3 text-center">
+					{{#if currentUser}}
 					<a href="/submit-article"><button class="btn btn-success">Submit Article</button></a>
+					{{else}}
+						<p>Please <a href="/sign-in">Log In</a> to submit an article.</p>
+					{{/if}}
 					<br>
 					<br>
 				</div>

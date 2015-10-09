@@ -37,14 +37,13 @@ Template.articlePage.events({                                          // 1
 		console.log('test');                                                 // 29
 	},                                                                    //
 	'click .delete-article': function () {                                // 31
-		console.log('test');                                                 // 32
-		if (confirm('Are you sure?')) {                                      // 33
-			Meteor.call('deleteArticle', this._id, function (error) {           // 34
-				if (error) {                                                       // 35
-					toastr.error("Failed to Delete... " + error);                     // 36
+		if (confirm('Are you sure?')) {                                      // 32
+			Meteor.call('deleteArticle', this._id, function (error) {           // 33
+				if (error) {                                                       // 34
+					toastr.error("Failed to Delete... " + error);                     // 35
 				} else {                                                           //
-					toastr.success("Article Deleted.");                               // 38
-					Router.go('/articles');                                           // 39
+					toastr.success("Article Deleted.");                               // 37
+					Router.go('/articles');                                           // 38
 				}                                                                  //
 			});                                                                 //
 		}                                                                    //
