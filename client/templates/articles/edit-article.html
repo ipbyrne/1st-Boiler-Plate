@@ -14,8 +14,11 @@
 				<label>Thumbnail URL</label>
 				<input type="text" name="thumbnail" id="thumbnailURL" class="form-control" value="{{thumb}}"/>
 			</div>
-			<br>
-			<button class="btn submit btn-primary pull-right">Save</button>
+			<div class="col-xs-12 text-right">
+				<br>
+				<button class="btn save btn-info">Save as Draft</button>
+				<button class="btn submit btn-primary">Save</button>
+			</div>
 		{{else}}
 			<h1>Whoops, this doesn't belong to you! Time to head <a href="/">home!</a></h1>
 		{{/if}}

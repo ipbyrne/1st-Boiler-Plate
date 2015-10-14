@@ -6,5 +6,11 @@ Template.adminDashboard.helpers({
 		if(this.profile.role === 'Member' && this.profile.role != 'Admin' ) {
 			return "selected"
 		}
+	},
+	articles: function() {
+		return Articles.find({},{sort: {submitted: -1}});
+	},
+	isDraft: function() {
+		return this.draft;
 	}
 });

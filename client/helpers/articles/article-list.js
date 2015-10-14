@@ -1,5 +1,5 @@
 Template.articleList.helpers({
 	articles: function() {
-		return Articles.find({},{sort: {submitted: -1}});
+		return Articles.find({draft:false},{sort: {submitted: -1}});
 	}
 });

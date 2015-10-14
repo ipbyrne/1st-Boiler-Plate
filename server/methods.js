@@ -26,26 +26,44 @@ Meteor.methods({
 		Meteor.users.remove(userId);
 	},
 	// Article Methods
-	articleInsert: function(title, body, thumnailURL) {
+	articleInsert: function(title, body, thumbnailURL) {
 		var articleId = Articles.insert({
 			title: title,
 			body: body,
-			thumb: thumnailURL,
+			thumb: thumbnailURL,
 			likes: 0,
 			likers: [],
 			comments: [],
 			submitted: new Date(),
 			user: Meteor.userId(),
-			useremail: Meteor.user().emails[0].address
+			useremail: Meteor.user().emails[0].address,
+			draft: false
 		});
 		var article = Articles.findOne({title: title})
 		return article._id;
 	},
-	articleUpdate: function(articleId, title, body, thumbnailURL) {
+	articleSaveAsDraft: function(title,body, thumbnailURL) {
+		var articleId = Articles.insert({
+			title: title,
+			body: body,
+			thumb: thumbnailURL,
+			likes: 0,
+			likers: [],
+			comments: [],
+			submitted: new Date(),
+			user: Meteor.userId(),
+			useremail: Meteor.user().emails[0].address,
+			draft: true
+		});
+		var article = Articles.findOne({title: title})
+		return article._id;
+	},
+	articleUpdate: function(articleId, title, body, thumbnailURL, draft) {
 		Articles.update({_id: articleId}, {$set: {
 			title:title,
 			body:body,
-			thumb: thumbnailURL}
+			thumb: thumbnailURL,
+			draft: draft}
 		});
 	},
 	likeArticle: function(articleId) {

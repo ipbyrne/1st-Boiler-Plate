@@ -31,7 +31,7 @@ Template.registerHelper('userLimitReached', function() {
 });
 
 Template.registerHelper('articleLimitReached', function() {
-	if(Articles.find().count() >= 5) {
+	if(Articles.find().count() >= 10) {
 		return true;
 	}
 });

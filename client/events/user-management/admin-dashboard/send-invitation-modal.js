@@ -3,7 +3,7 @@ Template.sendInvitationModal.events({
 		e.preventDefault();
 		var user = {
 			email: $('#signup-email').val(),
-			password: Random.id(),
+			password: "password123",
 			profile: {
 				role: $("#user-roles").find( 'option:selected' ).val()
 			}

@@ -12,8 +12,11 @@
 				<label>Thumbnail URL</label>
 				<input type="text" name="thumbnail" id="thumbnailURL" class="form-control"/>
 			</div>
-			<br>
-			<button class="btn submit btn-primary pull-right">Submit</button>
+			<div class="col-xs-12 text-right">
+				<br>
+				<button class="btn save btn-info">Save as Draft</button>
+				<button class="btn submit btn-primary">Publish</button>
+			</div>
 		{{else}}
 			<h1>Whoops, you must be <a href="/sign-in">Logged In</a> to do this!</h1>
 		{{/if}}
