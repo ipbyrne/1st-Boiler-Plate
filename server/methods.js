@@ -38,6 +38,8 @@ Meteor.methods({
 			user: Meteor.userId(),
 			useremail: Meteor.user().emails[0].address
 		});
+		var article = Articles.findOne({title: title})
+		return article._id;
 	},
 	articleUpdate: function(articleId, title, body, thumbnailURL) {
 		Articles.update({_id: articleId}, {$set: {
