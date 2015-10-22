@@ -75,7 +75,7 @@
 						{{#each articles}}
 							<tr>
 								<td class="text-left text-middle">{{title}}{{#if isDraft}}<label class="btn btn-sm btn-warning pull-right">Draft</label>{{/if}}</td>
-								<td>{{submitted}}</td>
+								<td>{{formatDate submitted}}</td>
 								<td>
 									<a href="/articles/edit/{{_id}}"><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
 									<button class="delete-article btn btn-danger"><i class="fa fa-times"></i></button>

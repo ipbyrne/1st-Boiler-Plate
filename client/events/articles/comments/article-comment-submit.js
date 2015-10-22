@@ -10,7 +10,8 @@ Template.articleCommentSubmit.events({
 			likes: 0,
 			likers: [],
 			user: Meteor.userId(),
-			useremail: Meteor.user().emails[0].address
+			useremail: Meteor.user().emails[0].address,
+			username: Meteor.user().profile.name
 		};
 		
     Meteor.call('commentInsert', comment);

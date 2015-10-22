@@ -20,7 +20,7 @@
 			<div id="user" class="hide">{{useremail}}</div>
 			<h4>
 				<img class="img-circle" width="50" src="{{gravatarImgUrl}}" />
-				<a class="article-item-name">by {{useremail}}</a>   <button class="article-item-upvote btn btn-default"><i class="fa fa-heart"></i> {{likes}}</button>   <button class="article-item-comment btn btn-default" href="#"><i class="fa fa-comment"></i> {{commentCount}}</button>   <span class="article-item-date">{{submitted}}</span>
+				<a class="article-item-name">by {{useremail}}</a>   <button class="article-item-upvote btn btn-default"><i class="fa fa-heart"></i> {{likes}}</button>   <button class="article-item-comment btn btn-default" href="#"><i class="fa fa-comment"></i> {{commentCount}}</button>   <span class="article-item-date">{{formatDate submitted}}</span>
 					{{#if itemBelongsToYou}}
 						<div class="btn-group pull-right">
 							<a href="{{pathFor 'articleEditPage'}}"><button class="btn btn-warning edit-article">Edit</button></a>

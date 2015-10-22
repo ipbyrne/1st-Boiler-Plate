@@ -7,9 +7,11 @@ Meteor.methods({
 	setUserRole: function(userId, role) {
 		Meteor.users.update({_id: userId}, {$set: {"profile.role": role}})
 	},
-	editUser: function(userId, newEmail, oldEmail) {
+	editUser: function(userId, newEmail, name) {
+		var user = Meteor.users.findOne({_id: userId});
+		Accounts.removeEmail(userId, user.emails[0].address);
 		Accounts.addEmail(userId, newEmail, false);
-		Accounts.removeEmail(userId, oldEmail);
+		Meteor.users.update({_id: userId}, {$set: {"profile.name": name}});
 	},
 	resetUserPassword: function(userId, email) {
 		Accounts.sendResetPasswordEmail(userId, email);
@@ -37,6 +39,7 @@ Meteor.methods({
 			submitted: new Date(),
 			user: Meteor.userId(),
 			useremail: Meteor.user().emails[0].address,
+			username: Meteor.user().profile.name,
 			draft: false
 		});
 		var article = Articles.findOne({title: title})
@@ -53,6 +56,7 @@ Meteor.methods({
 			submitted: new Date(),
 			user: Meteor.userId(),
 			useremail: Meteor.user().emails[0].address,
+			username: Meteor.user().profile.name,
 			draft: true
 		});
 		var article = Articles.findOne({title: title})

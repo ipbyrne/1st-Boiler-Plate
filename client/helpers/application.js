@@ -41,3 +41,7 @@ Template.registerHelper('commentLimitReached', function() {
 		return true;
 	}
 });
+
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format("MMM Do YY");
+});

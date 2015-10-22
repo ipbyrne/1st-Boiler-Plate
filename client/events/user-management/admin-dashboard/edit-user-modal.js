@@ -4,12 +4,12 @@ Template.editUserModal.events({
 		
 		var userId = this._id;
 		var newUserEmail = $('#email'+this._id).val();
-		var oldEmail = this.emails[0].address;
+		var name = $('#name'+this._id).val();
 		
 		if(newUserEmail != '') {
 			// Close Modal
 			$('#edit-user-modal'+this._id).modal('toggle');
-			Meteor.call("editUser", userId, newUserEmail, oldEmail, function(error) {
+			Meteor.call("editUser", userId, newUserEmail, name, function(error) {
 				if(error) {
 					toastr.error("Failed to Update User... " + error);
 				} else {

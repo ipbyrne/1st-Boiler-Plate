@@ -6,7 +6,8 @@ Meteor.startup(function () {
 			email: 'admin@admin.com',
 			password: 'password123',
 			profile: {
-				role: 'Admin'
+				role: 'Admin',
+				name: 'Admin'
 			}
 		}
 		Meteor.call("createNewUser", admin);
@@ -16,7 +17,8 @@ Meteor.startup(function () {
 			email: 'member1@member.com',
 			password: 'password123',
 			profile: {
-				role: 'Member'
+				role: 'Member',
+				name: 'Member1'
 			}
 		}
 		Meteor.call("createNewUser", userOne);
@@ -26,7 +28,8 @@ Meteor.startup(function () {
 			email: 'member2@member.com',
 			password: 'password123',
 			profile: {
-				role: 'Member'
+				role: 'Member',
+				name: 'Member2'
 			}
 		}
 		Meteor.call("createNewUser", userTwo);
@@ -36,7 +39,8 @@ Meteor.startup(function () {
 			email: 'member3@member.com',
 			password: 'password123',
 			profile: {
-				role: 'Member'
+				role: 'Member',
+				name: 'Member3'
 			}
 		}
 		Meteor.call("createNewUser", userThree);
@@ -56,6 +60,7 @@ Meteor.startup(function () {
 			submitted: new Date(),
 			user: user._id,
 			useremail: "admin@admin.com",
+			username: "Admin",
 			draft: false
 		});
 		// Generate Fake Draft Article
@@ -74,6 +79,7 @@ Meteor.startup(function () {
 			submitted: new Date(),
 			user: user._id,
 			useremail: "admin@admin.com",
+			username: "Admin",
 			draft: true
 		});
 		// Generate Fake Comment
@@ -85,7 +91,8 @@ Meteor.startup(function () {
 			likes: 0,
 			likers: [],
 			user: user._id,
-			useremail: "admin@admin.com"
+			useremail: "admin@admin.com",
+			username: "Admin"
 		};
 		
     Meteor.call('commentInsert', comment)

@@ -5,7 +5,8 @@ Template.sendInvitationModal.events({
 			email: $('#signup-email').val(),
 			password: "password123",
 			profile: {
-				role: $("#user-roles").find( 'option:selected' ).val()
+				role: $("#user-roles").find( 'option:selected' ).val(),
+				name: ''
 			}
 		}
 		var email = $('#signup-email').val();
