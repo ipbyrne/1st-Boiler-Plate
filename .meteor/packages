@@ -20,7 +20,6 @@ accounts-base
 accounts-password
 check
 twbs:bootstrap
-iron:router
 themeteorchef:jquery-validation
 themeteorchef:bert
 chrismbeckett:toastr
@@ -37,3 +36,7 @@ meteorhacks:npm
 
 
 npm-container
+react
+kadira:flow-router
+kadira:react-layout
+q42:react-markdown
