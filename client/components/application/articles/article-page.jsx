@@ -4,7 +4,7 @@ ArticlePage = React.createClass({
   getMeteorData() {
     var isYours = false;
     if(Meteor.user()){
-      if(Meteor.user().profile.name === Articles.findOne(this.props.articleId).username){
+      if(Meteor.user().profile.name === Articles.findOne({slug:this.props.articleSlug}).username){
         isYours = true;
       }
     }
@@ -58,7 +58,7 @@ ArticlePage = React.createClass({
   },
 
   render() {
-    const article = Articles.findOne(this.props.articleId);
+    const article = Articles.findOne({slug: this.props.articleSlug});
     const title = article.title;
     const body = article.body;
     const thumb = article.thumb;

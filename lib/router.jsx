@@ -39,15 +39,15 @@ FlowRouter.route('/articles', {
   }
 });
 // Article Page
-FlowRouter.route('/articles/:_id', {
+FlowRouter.route('/articles/:slug', {
   subscriptions: function() {
     this.register('articles', Meteor.subscribe('articles'));
   },
   action(params, queryParams) {
-    var article = Articles.findOne(params._id);
+    var article = Articles.findOne({slug: params.slug});
     var SEOtitle = article.title;
     DocHead.setTitle(SEOtitle);
-    ReactLayout.render(ArticlePage, {articleId: params._id});
+    ReactLayout.render(ArticlePage, {articleSlug: params.slug});
   }
 });
 // Submit Article Page

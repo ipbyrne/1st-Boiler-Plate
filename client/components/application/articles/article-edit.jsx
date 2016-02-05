@@ -3,7 +3,8 @@ ArticleEditPage = React.createClass({
 
   getMeteorData() {
     return {
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
+      article: Articles.findOne(this.props.articleId)
     };
   },
 
@@ -24,6 +25,14 @@ ArticleEditPage = React.createClass({
 		var thumbnailURL = ReactDOM.findDOMNode(this.refs.thumbnailURL).value;
 		var draft = false;
 
+    if(title == "") {
+      title = this.data.article.title;
+    }
+
+    if(thumbnailURL == "") {
+      thumbnailURL = this.data.article.thumb;
+    }
+
 		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error) {
 			if(error) {
 				toastr.error("Failed to Update Article... " + error);
@@ -43,6 +52,14 @@ ArticleEditPage = React.createClass({
 		var body = $('#summernote').summernote('code');
 		var thumbnailURL = ReactDOM.findDOMNode(this.refs.thumbnailURL).value;
 		var draft = true;
+
+    if(title == "") {
+      title = this.data.article.title;
+    }
+
+    if(thumbnailURL == "") {
+      thumbnailURL = this.data.article.thumb;
+    }
 
 		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error) {
 			if(error) {
@@ -67,14 +84,14 @@ ArticleEditPage = React.createClass({
           <form className="form-group">
       			<div className="col-xs-12">
       				<label>Title</label>
-      				<input type="text" name="title" ref="title" className="form-control" value={title}/>
+      				<input onChange={function() {}} type="text" name="title" ref="title" className="form-control" placeholder={title}/>
       				<br/>
       				<label>Body</label>
       				<div ref="summernote" id="summernote" ref="body" className="body"><Markdown>{body}</Markdown></div>
       				<br/>
       				<br/>
       				<label>Thumbnail URL</label>
-      				<input type="text" name="thumbnail" ref="thumbnailURL" className="form-control" value={thumbnailURL}/>
+      				<input type="text" name="thumbnail" ref="thumbnailURL" className="form-control" placeholder={thumbnailURL}/>
       			</div>
       			<div className="col-xs-12 text-right">
       				<br/>

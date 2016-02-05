@@ -1,3 +1,11 @@
+Slugger = {};
+
+Slugger.slug = function(string) {
+  var sluggedString = string.toLowerCase().replace(/ /g,'-').replace(/[-]+/g, '-').replace(/[^\w\x80-\xFF-]+/g,'');
+
+  return sluggedString;
+}
+
 Meteor.methods({
 	// Admin Dashboard
 	getUserCount: function () {
@@ -31,6 +39,7 @@ Meteor.methods({
 	articleInsert: function(title, body, thumbnailURL) {
 		var articleId = Articles.insert({
 			title: title,
+			slug: Slugger.slug(title),
 			body: body,
 			thumb: thumbnailURL,
 			likes: 0,
@@ -47,6 +56,7 @@ Meteor.methods({
 	articleSaveAsDraft: function(title,body, thumbnailURL) {
 		var articleId = Articles.insert({
 			title: title,
+			slug: Slugger.slug(title),
 			body: body,
 			thumb: thumbnailURL,
 			likes: 0,
@@ -63,6 +73,7 @@ Meteor.methods({
 	articleUpdate: function(articleId, title, body, thumbnailURL, draft) {
 		Articles.update({_id: articleId}, {$set: {
 			title:title,
+			slug: Slugger.slug(title),
 			body:body,
 			thumb: thumbnailURL,
 			draft: draft}

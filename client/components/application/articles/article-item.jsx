@@ -19,7 +19,7 @@ ArticleItem = React.createClass({
     const submitted = moment(this.props.article.submitted).format("MMM Do YY");
     const commentCount = this.data.comments.length;
     const gravatarURL = Gravatar.imageUrl(this.props.article.useremail);
-    const articleURL = "/articles/"+ this.props.article._id;
+    const articleURL = "/articles/"+ this.props.article.slug;
 
     return (
       <div className="col-md-5 col-md-offset-1 article-item-div">
