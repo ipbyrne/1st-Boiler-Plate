@@ -3,8 +3,10 @@ ArticlePage = React.createClass({
 
   getMeteorData() {
     var isYours = false;
-    if(Meteor.user().profile.name === Articles.findOne(this.props.articleId).username){
-      isYours = true;
+    if(Meteor.user()){
+      if(Meteor.user().profile.name === Articles.findOne(this.props.articleId).username){
+        isYours = true;
+      }
     }
 
     return {

@@ -14,7 +14,7 @@ Homepage = React.createClass({
     			<h2>Boiler Plate</h2>
     			<p>A starting point for Meteor applications.</p>
     			<p><a className="btn btn-success" href="https://github.com/ipbyrne/Boiler-Plate" role="button" target="_Blank">Read the Documentation</a></p>
-    			<p>Currently at v0.1</p>
+    			<p>Currently at v1.0</p>
     		</div>
     	</div>
     )
