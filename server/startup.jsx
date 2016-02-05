@@ -1,3 +1,10 @@
+Slugger = {};
+
+Slugger.slug = function(string) {
+  var sluggedString = string.toLowerCase().replace(/ /g,'-').replace(/[-]+/g, '-').replace(/[^\w\x80-\xFF-]+/g,'');
+  return sluggedString;
+}
+
 Meteor.startup(function () {
 
 	if(Meteor.users.find().count() === 0){
@@ -52,6 +59,7 @@ Meteor.startup(function () {
 		var user = Accounts.findUserByEmail("admin@admin.com");
 		Articles.insert({
 			title: title,
+			slug: Slugger.slug(title),
 			body: body,
 			thumb: thumbnailURL,
 			likes: 0,
@@ -70,6 +78,7 @@ Meteor.startup(function () {
 		var user = Accounts.findUserByEmail("admin@admin.com");
 		Articles.insert({
 			title: title,
+			slug: Slugger.slug(title),
 			body: body,
 			thumb: thumbnailURL,
 			likes: 0,

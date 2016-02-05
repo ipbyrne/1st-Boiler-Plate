@@ -2,7 +2,6 @@ Slugger = {};
 
 Slugger.slug = function(string) {
   var sluggedString = string.toLowerCase().replace(/ /g,'-').replace(/[-]+/g, '-').replace(/[^\w\x80-\xFF-]+/g,'');
-
   return sluggedString;
 }
 
