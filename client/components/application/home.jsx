@@ -8,6 +8,10 @@ Homepage = React.createClass({
   },
 
   render() {
+    // Set SEO
+    var SEOtitle = "Home Page";
+    DocHead.setTitle(SEOtitle);
+    
     return (
       <div className="row">
     		<div className="jumbotron text-center">

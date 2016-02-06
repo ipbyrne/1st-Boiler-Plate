@@ -8,9 +8,12 @@ Meteor.publish("users", function (userSearchKeyword, limit) {
 Meteor.publish("articles", function (articleSearchKeyword, limit) {
 	// Publish Collection Count
 	Counts.publish(this, 'articles', Articles.find(), { noReady: true });
-	
+
 	articleSearchQuery = new RegExp( articleSearchKeyword, 'i' );
 	return Articles.find({$or: [{body: articleSearchQuery}, {_id: articleSearchQuery}, {title: articleSearchQuery}, {submitted: articleSearchQuery}, {useremail: articleSearchQuery}]}, {limit:limit});
+});
+Meteor.publish("article", function (id) {
+	return Articles.findOne(id);
 });
 
 Meteor.publish("comments", function(limit) {

@@ -80,6 +80,10 @@ AdminDashboard = React.createClass({
   },
 
   render() {
+    // Set SEO
+    var SEOtitle = "Dashboard";
+    DocHead.setTitle(SEOtitle);
+    
     return (
       <div>
         {this.data.isAdmin ?

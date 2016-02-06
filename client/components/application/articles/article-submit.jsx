@@ -58,6 +58,9 @@ ArticleSubmitPage = React.createClass({
 
 
   render() {
+    // Set SEO
+    var SEOtitle = "Submit an Article";
+    DocHead.setTitle(SEOtitle);
 
     return (
       <div className="row">

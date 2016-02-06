@@ -78,6 +78,10 @@ ArticleEditPage = React.createClass({
     const body = article.body;
     const thumbnailURL = article.thumb;
 
+    // Set SEO
+    var SEOtitle = "Edit Article";
+    DocHead.setTitle(SEOtitle);
+
     return (
       <div className="row">
     		{this.data.currentUser ?

@@ -50,9 +50,7 @@ ArticleItem = React.createClass({
     						<img className="img-circle" width="25" src={gravatarURL} />
     						<p className="article-item-name" href="#">by {username}</p>
     						<br/>
-    						<br/>   <button className="article-item-upvote btn btn-default btn-sm"><i className="fa fa-heart"></i> {likes}</button>   <button className="article-item-comment btn btn-default btn-sm" href="#"><i className="fa fa-comment"></i> {commentCount} </button>
-    						<br/>
-    						<br/>   <span className="article-item-date">{submitted}</span>
+                <span className="article-item-date">{submitted}</span>
     					</div>
     				</div>
     			</div>

@@ -3,8 +3,9 @@ ArticlePage = React.createClass({
 
   getMeteorData() {
     var isYours = false;
+    var article = Articles.findOne({slug:this.props.articleSlug});
     if(Meteor.user()){
-      if(Meteor.user().profile.name === Articles.findOne({slug:this.props.articleSlug}).username){
+      if(Meteor.user().profile.name === article.username){
         isYours = true;
       }
     }
@@ -12,8 +13,13 @@ ArticlePage = React.createClass({
     return {
       currentUser: Meteor.user(),
       belongsToYou: isYours,
-      comments: Comments.find({articleId: this.props.articleId}, {sort:{submitted: 1}}).fetch()
+      comments: Comments.find({articleId: article._id}, {sort:{submitted: 1}}).fetch(),
+      article: article
     };
+  },
+
+  likeArticle() {
+    Meteor.call("likeArticle", this.data.article._id);
   },
 
   renderComments() {
@@ -28,7 +34,7 @@ ArticlePage = React.createClass({
 
 		var comment = {
 			body: commentBody,
-			articleId: this.props.articleId,
+			articleId: this.data.article._id,
 			submitted: new Date(),
 			likes: 0,
 			likers: [],
@@ -46,7 +52,7 @@ ArticlePage = React.createClass({
     event.preventDefault();
 
     if(confirm("Are You Sure?")) {
-      Meteor.call("deleteArticle", this.props.articleId, function(error) {
+      Meteor.call("deleteArticle", this.data.article._id, function(error) {
         if(error){
           toastr.error("Error: " + error);
         } else {
@@ -58,7 +64,7 @@ ArticlePage = React.createClass({
   },
 
   render() {
-    const article = Articles.findOne({slug: this.props.articleSlug});
+    const article = this.data.article;
     const title = article.title;
     const body = article.body;
     const thumb = article.thumb;
@@ -68,6 +74,10 @@ ArticlePage = React.createClass({
     const commentCount = this.data.comments.length;
     const gravatarURL = Gravatar.imageUrl(article.useremail);
     const articleEditURL = "/articles/edit/" + article._id;
+
+    // Set SEO
+    var SEOtitle = article.title;
+    DocHead.setTitle(SEOtitle);
 
     return (
       <div className="col-xs-12">

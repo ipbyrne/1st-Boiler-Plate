@@ -19,6 +19,10 @@ ArticleList = React.createClass({
   },
 
   render() {
+    // Set SEO
+    var SEOtitle = "Articles";
+    DocHead.setTitle(SEOtitle);
+    
     return (
 			<div>
 				{this.data.currentUser ?
