@@ -12,8 +12,8 @@ Meteor.publish("articles", function (articleSearchKeyword, limit) {
 	articleSearchQuery = new RegExp( articleSearchKeyword, 'i' );
 	return Articles.find({$or: [{body: articleSearchQuery}, {_id: articleSearchQuery}, {title: articleSearchQuery}, {submitted: articleSearchQuery}, {useremail: articleSearchQuery}]}, {limit:limit});
 });
-Meteor.publish("article", function (id) {
-	return Articles.findOne(id);
+Meteor.publish("article", function (slug) {
+	return Articles.find({slug: slug});
 });
 
 Meteor.publish("comments", function(limit) {

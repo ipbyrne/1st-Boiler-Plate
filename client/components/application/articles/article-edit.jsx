@@ -2,9 +2,15 @@ ArticleEditPage = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    var slug = this.props.articleSlug;
+    Deps.autorun(function (){
+      articlesHandle = Meteor.subscribe("article", slug);
+      article = Articles.findOne({slug:slug});
+    });
+
     return {
       currentUser: Meteor.user(),
-      article: Articles.findOne(this.props.articleId)
+      article: article
     };
   },
 
@@ -73,7 +79,7 @@ ArticleEditPage = React.createClass({
 
 
   render() {
-    const article = Articles.findOne(this.props.articleId);
+    const article = this.data.article;
     const title = article.title;
     const body = article.body;
     const thumbnailURL = article.thumb;
@@ -110,5 +116,6 @@ ArticleEditPage = React.createClass({
     		}
       </div>
     );
+
   }
 });

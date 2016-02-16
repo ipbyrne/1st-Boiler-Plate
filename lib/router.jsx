@@ -30,9 +30,6 @@ FlowRouter.route('/articles', {
 });
 // Article Page
 FlowRouter.route('/articles/:slug', {
-  subscriptions: function(params) {
-    this.register('articles', Meteor.subscribe('articles'));
-  },
   action(params, queryParams) {
     ReactLayout.render(ArticlePage, {articleSlug: params.slug});
   }
@@ -44,12 +41,9 @@ FlowRouter.route('/submit-article', {
   }
 });
 // Edit Article Page
-FlowRouter.route('/articles/edit/:_id', {
-  subscriptions: function() {
-    this.register('articles', Meteor.subscribe('articles'));
-  },
+FlowRouter.route('/articles/edit/:slug', {
   action(params, queryParams) {
-    ReactLayout.render(ArticleEditPage, {articleId: params._id});
+    ReactLayout.render(ArticleEditPage, {articleSlug: params.slug});
   }
 });
 // Admin Dashboard Page
