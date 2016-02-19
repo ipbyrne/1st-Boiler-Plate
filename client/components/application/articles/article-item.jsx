@@ -19,10 +19,10 @@ ArticleItem = React.createClass({
     const submitted = moment(this.props.article.submitted).format("MMM Do YY");
     const commentCount = this.data.comments.length;
     const gravatarURL = Gravatar.imageUrl(this.props.article.useremail);
-    const articleURL = "/articles/"+ this.props.article.slug;
+    const articleURL = "/article/"+ this.props.article.slug;
 
     return (
-      <div className="col-md-5 col-md-offset-1 article-item-div">
+      <div className="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 article-item-div">
     		<a href={articleURL}>
     			<div className="row">
     				<div className="panel panel-default">

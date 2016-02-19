@@ -2,15 +2,21 @@ ArticleList = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    Deps.autorun(function (){
+    var currentPage = parseInt(this.props.page) || 1;
+    var recordsPerPage = 1;
+    Tracker.autorun(function (){
       articleSearchkeyword = Session.get('article-search-query');
-    	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 10);
+      var skipCount = (currentPage - 1) * recordsPerPage; // 1 records per page
+
+      articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, recordsPerPage, skipCount);
     });
 
     return {
       loading: ! articlesHandle.ready(),
       currentUser: Meteor.user(),
-      articles: Articles.find({draft:false},{sort: {submitted: -1}}).fetch()
+      articles: Articles.findFromPublication("articles", {draft:false},{sort: {submitted: -1}}).fetch(),
+      prevPageClass: currentPage >= Counts.get('articles')/recordsPerPage ? "" : "disabled",
+      nextPageClass: currentPage < Counts.get('articles')/recordsPerPage ? "" : "disabled"
     };
   },
 
@@ -18,6 +24,22 @@ ArticleList = React.createClass({
     return this.data.articles.map((article) => {
       return <ArticleItem key={article._id} article={article}/>;
     });
+  },
+
+  nextPage() {
+    var recordsPerPage = 1;
+    var currentPage = parseInt(this.props.page) || 1;
+    if(currentPage < Counts.get('articles')/recordsPerPage) {
+      FlowRouter.go("/articles/" + (currentPage + 1));
+    }
+  },
+
+  prevPage() {
+    var recordsPerPage = 1;
+    var currentPage = parseInt(this.props.page) || 1;
+    if(currentPage >= Counts.get('articles')/recordsPerPage) {
+      FlowRouter.go("/articles/" + (currentPage - 1));
+    }
   },
 
   updateSearch() {
@@ -34,7 +56,6 @@ ArticleList = React.createClass({
         <Loading />
       )
     } else {
-
       return (
   			<div>
   				{this.data.currentUser ?
@@ -57,6 +78,20 @@ ArticleList = React.createClass({
           <div className="row">
             {this.renderArticles()}
           </div>
+          <nav>
+            <ul className="pager">
+              <li className="prevPageClass">
+                <a id="prevPage" className={this.data.prevPageClass} onClick={this.prevPage}>
+                  <span aria-hidden="true">&larr;</span> Previous
+                </a>
+              </li>
+              <li className="nextPageClass">
+                <a id="nextPage" className={this.data.nextPageClass} onClick={this.nextPage}>
+                  Next <span aria-hidden="true">&rarr;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
   			</div>
       )
     }

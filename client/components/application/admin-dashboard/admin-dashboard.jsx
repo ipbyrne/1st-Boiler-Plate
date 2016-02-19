@@ -2,14 +2,14 @@ AdminDashboard = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    Deps.autorun(function (){
+    Tracker.autorun(function (){
       articleSearchkeyword = Session.get('article-search-query');
-    	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 10);
+    	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 10, 0);
 
       userSearchKeyword = Session.get('user-search-query');
     	usersHandle = Meteor.subscribeWithPagination('users', userSearchKeyword, 10);
     });
-
+    
     // Check for Admin User
     if(Meteor.user()){
       var admin = Meteor.user();
@@ -25,9 +25,9 @@ AdminDashboard = React.createClass({
       loading: ! articlesHandle.ready(),
       currentUser: Meteor.user(),
       isAdmin: admin,
-      users: Meteor.users.find({},{sort:{"profile.role": 1}}).fetch(),
+      users: Meteor.users.findFromPublication("users",{},{sort:{"profile.role": 1}}).fetch(),
       userCount: Counts.get('users'),
-      articles: Articles.find({},{sort: {submitted: -1}}).fetch(),
+      articles: Articles.findFromPublication("articles",{},{sort: {submitted: -1}}).fetch(),
       articleCount: Counts.get('articles')
     };
   },

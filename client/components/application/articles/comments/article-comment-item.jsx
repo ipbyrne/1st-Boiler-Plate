@@ -7,9 +7,37 @@ ArticleCommentItem = React.createClass({
       isYours = true;
     }
 
+    if ($.inArray(Meteor.userId(), this.props.comment.likers) !== -1) {
+      Session.set("liked-comment" + this.props.comment._id , true);
+    } else {
+      Session.set("liked-comment" + this.props.comment._id, false);
+    }
+
     return {
       belongsToYou: isYours
     };
+  },
+
+  likeComment() {
+    if (Session.get("liked-comment" + this.props.comment._id) == true){
+      Meteor.call("unlikeComment", this.props.comment._id, function(error) {
+        if(error) {
+          toastr.error("Error: " + error)
+        } else {
+          toastr.success("Comment Unliked!");
+          Session.set("liked-comment" + this.props.comment._id, false);
+        }
+      });
+    } else {
+      Meteor.call("likeComment", this.props.comment._id, function(error) {
+        if(error) {
+          toastr.error("Error: " + error)
+        } else {
+          toastr.success("Comment Liked!");
+          Session.set("liked-comment" + this.props.comment._id, true);
+        }
+      });
+    }
   },
 
   deleteComment(){
@@ -31,6 +59,7 @@ ArticleCommentItem = React.createClass({
     const username = this.props.comment.username;
     const submitted = moment(this.props.comment.submitted).format("MMM Do YY");
     const gravatarURL = Gravatar.imageUrl(this.props.comment.useremail);
+    const likeCounterID = "commentLikeCounter" + this.props.comment._id;
 
     return (
       <div className="col-xs-12">
@@ -44,7 +73,7 @@ ArticleCommentItem = React.createClass({
     		<br/>
     		<div className="col-xs-3">
     			<div className="btn-group pull-right">
-    				<a><button className="article-item-upvote btn btn-default"><i className="fa fa-heart"></i> {likes}</button></a>
+    				<a><button onClick={this.likeComment} className="article-item-upvote btn btn-default"><i className="fa fa-heart"></i> <span id={likeCounterID}>{likes}</span></button></a>
     				{this.data.belongsToYou ?
     					<button onClick={this.deleteComment} className="btn btn-danger delete-comment">Delete</button>
     				:

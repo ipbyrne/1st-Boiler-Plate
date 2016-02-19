@@ -27,7 +27,6 @@ random
 email
 momentjs:moment
 fortawesome:fontawesome
-percolate:paginated-subscription
 summernote:summernote
 markdown
 jparker:gravatar
@@ -41,3 +40,5 @@ kadira:flow-router
 kadira:react-layout
 q42:react-markdown
 kadira:dochead
+percolate:find-from-publication
+percolate:paginated-subscription

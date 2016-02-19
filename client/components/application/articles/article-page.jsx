@@ -4,14 +4,21 @@ ArticlePage = React.createClass({
   getMeteorData() {
     var slug = this.props.articleSlug;
     var isYours = false;
-    Deps.autorun(function (){
+    Tracker.autorun(function (){
       articlesHandle = Meteor.subscribe("article", slug);
+      commentsHandle = Meteor.subscribe("comments");
       article = Articles.findOne({slug:slug});
     });
 
     if(Meteor.user() && article){
       if(Meteor.user().profile.name === article.username){
         isYours = true;
+      }
+
+      if ($.inArray(Meteor.userId(), article.likers) !== -1) {
+        Session.set("liked-article", true);
+      } else {
+        Session.set("liked-article", false);
       }
     }
 
@@ -32,7 +39,31 @@ ArticlePage = React.createClass({
   },
 
   likeArticle() {
-    Meteor.call("likeArticle", this.data.article._id);
+    if (Session.get("liked-article") == true){
+      Meteor.call("unlikeArticle", this.data.article._id, function(error) {
+        if(error) {
+          toastr.error("Error: " + error)
+        } else {
+          var likes = parseInt(document.getElementById("likeCounter").innerHTML);
+          likes -=1;
+          document.getElementById("likeCounter").innerHTML = likes;
+          toastr.success("Article Unliked!");
+          Session.set("liked-article", false);
+        }
+      });
+    } else {
+      Meteor.call("likeArticle", this.data.article._id, function(error) {
+        if(error) {
+          toastr.error("Error: " + error)
+        } else {
+          var likes = parseInt(document.getElementById("likeCounter").innerHTML);
+          likes +=1;
+          document.getElementById("likeCounter").innerHTML = likes;
+          toastr.success("Article Liked!");
+          Session.set("liked-article", true);
+        }
+      });
+    }
   },
 
   renderComments() {
@@ -56,7 +87,13 @@ ArticlePage = React.createClass({
 			username: Meteor.user().profile.name
 		};
 
-    Meteor.call('commentInsert', comment);
+    Meteor.call('commentInsert', comment, function(error) {
+      if(error) {
+        toastr.error("Error: " + error)
+      } else {
+        toastr.success("Comment Created!");
+      }
+    });
 
     ReactDOM.findDOMNode(this.refs.comment).value = "";
   },
@@ -91,7 +128,7 @@ ArticlePage = React.createClass({
       const submitted = moment(article.submitted).format("MMM Do YY");
       const commentCount = this.data.comments.length;
       const gravatarURL = Gravatar.imageUrl(article.useremail);
-      const articleEditURL = "/articles/edit/" + article.slug;
+      const articleEditURL = "/article/edit/" + article.slug;
 
       // Set SEO
       var SEOtitle = article.title;
@@ -119,7 +156,7 @@ ArticlePage = React.createClass({
       			<div id="user" className="hide">{username}</div>
       			<h4>
       				<img className="img-circle" width="50" src={gravatarURL} />
-      				<a className="article-item-name">by {username}</a>   <button className="article-item-upvote btn btn-default"><i className="fa fa-heart"></i> {likes}</button>   <button className="article-item-comment btn btn-default" href="#"><i className="fa fa-comment"></i> {commentCount}</button>   <span className="article-item-date">{submitted}</span>
+      				<a className="article-item-name">  by {username}</a>   <button className="article-item-upvote btn btn-default" onClick={this.likeArticle}><i className="fa fa-heart"></i> <span id="likeCounter">{likes}</span></button>   <button className="article-item-comment btn btn-default" href="#"><i className="fa fa-comment"></i> {commentCount}</button>   <span className="article-item-date">{submitted}</span>
       					{this.data.belongsToYou ?
       						<div className="btn-group pull-right">
       							<a href={articleEditURL}><button className ="btn btn-warning edit-article">Edit</button></a>

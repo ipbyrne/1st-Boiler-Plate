@@ -27,7 +27,7 @@ AdminArticleItem = React.createClass({
   render() {
     const title = this.props.article.title;
     const submitted = moment(this.props.article.submitted).format("MMM Do YY");
-    const editArticleURL = "/articles/edit/" + this.props.article.slug;
+    const editArticleURL = "/article/edit/" + this.props.article.slug;
 
     return (
       <tr>

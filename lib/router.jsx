@@ -23,13 +23,18 @@ FlowRouter.route('/change-password', {
   }
 });
 // Article List Page
-FlowRouter.route('/articles', {
-  action() {
-    ReactLayout.render(ArticleList);
+FlowRouter.route('/articles/:page?', {
+  action(params, queryParams) {
+    var recordsPerPage = 2;
+    //if(params.page > Counts.get('articles')/recordsPerPage) {
+      ReactLayout.render(ArticleList, {page: params.page});
+    //} else {
+      //ReactLayout.render(Page404);
+    //}
   }
 });
 // Article Page
-FlowRouter.route('/articles/:slug', {
+FlowRouter.route('/article/:slug', {
   action(params, queryParams) {
     ReactLayout.render(ArticlePage, {articleSlug: params.slug});
   }
@@ -52,3 +57,9 @@ FlowRouter.route('/dashboard', {
     ReactLayout.render(AdminDashboard);
   }
 });
+// 404 Route error
+FlowRouter.notFound = {
+    action: function() {
+      ReactLayout.render(Page404);
+    }
+};

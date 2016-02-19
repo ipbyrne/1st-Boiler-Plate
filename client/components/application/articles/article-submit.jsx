@@ -27,7 +27,7 @@ ArticleSubmitPage = React.createClass({
 				if(error) {
 					toastr.error("Error: "+error);
 				} else {
-					var articleRoute = '/articles/' + response;
+					var articleRoute = '/article/' + response;
 					toastr.success("Article Published!");
 					FlowRouter.go(articleRoute);
 				}
