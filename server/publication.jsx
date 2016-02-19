@@ -2,7 +2,13 @@ FindFromPublication.publish("users", function (userSearchKeyword, limit) {
 		// Publish Collection Count
 		Counts.publish(this, 'users', Meteor.users.find(), { noReady: true });
 		userSearchQuery = new RegExp( userSearchKeyword, 'i' );
-    return Meteor.users.find({$or: [{"emails.address": userSearchQuery}]}, {limit: limit});
+    return Meteor.users.find({
+			$or: [
+				{"emails.address": userSearchQuery}
+			]
+		}, {
+			limit: limit
+		});
 });
 
 FindFromPublication.publish("articles", function (articleSearchKeyword, limit, skipCount) {
@@ -16,7 +22,18 @@ FindFromPublication.publish("articles", function (articleSearchKeyword, limit, s
   check(skipCount, positiveIntegerCheck);
 
 	articleSearchQuery = new RegExp( articleSearchKeyword, 'i' );
-	return Articles.find({$or: [{body: articleSearchQuery}, {_id: articleSearchQuery}, {title: articleSearchQuery}, {submitted: articleSearchQuery}, {useremail: articleSearchQuery}]}, {limit:limit, skip: skipCount});
+	return Articles.find({
+		$or: [
+			{body: articleSearchQuery},
+			{_id: articleSearchQuery},
+			{title: articleSearchQuery},
+			{submitted: articleSearchQuery},
+			{useremail: articleSearchQuery}
+		]
+	}, {
+		limit:limit,
+		skip: skipCount
+	});
 });
 FindFromPublication.publish("article", function (slug) {
 	return Articles.find({slug: slug});
