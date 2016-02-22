@@ -36,7 +36,7 @@ AdminMessagesMessageItem = React.createClass({
 
     return (
       <tr>
-        <td className="text-left text-middle">{name}<small> - <a href={messageURL}>View</a> - <a style={deleteButtonStyle} onClick={this.deleteMessage}>Delete</a></small>{this.data.isNew ? <strong> - New</strong> : "" }</td>
+        <td className="text-left text-middle">{name}<small> - <a href={messageURL}>View</a> - <a style={deleteButtonStyle} onClick={this.deleteMessage}>Delete</a></small>{this.data.isNew ? <strong> - New!</strong> : "" }</td>
         <td>{email}</td>
         <td>{submitted}</td>
       </tr>

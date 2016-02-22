@@ -76,22 +76,12 @@ AdminMessages = React.createClass({
               </div>
               <div className="panel-body">
                 <div className="col-md-12">
-            			<div className="col-md-9">
-            				<input onKeyUp={this.updateArticleSearch} type="text" name="searchbar" className="search-bar2 fa form-control" placeholder="&#xF002;    Search Articles" />
-            				<br/>
-            				<br/>
-            			</div>
-            			<div className="col-md-3 text-center">
-            				<a href="/submit-article"><button className="btn btn-success">Add an Article</button></a>
-            				<br/>
-            				<br/>
-            			</div>
             			<div className="col-xs-12">
             				<table className="table table-bordered">
             					<thead>
             						<tr>
-            							<th>Article Title</th>
-            							<th>Author</th>
+            							<th>Name</th>
+            							<th>Email</th>
             							<th>Date</th>
             						</tr>
             					</thead>

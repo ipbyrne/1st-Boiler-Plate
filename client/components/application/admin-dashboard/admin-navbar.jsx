@@ -58,13 +58,13 @@ AdminNavbar = React.createClass({
 
                 <li>
                   <a href="/admin/posts">
-                    <i className="fa fa-file-text-o fa-lg"></i> Posts
+                    <i className="fa fa-file-text fa-lg"></i> Posts
                   </a>
                 </li>
 
                 <li>
                   <a href="/admin/comments">
-                    <i className="fa fa-comment-o fa-lg"></i> Comments
+                    <i className="fa fa-comment fa-lg"></i> Comments
                   </a>
                 </li>
 
