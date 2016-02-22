@@ -1,4 +1,4 @@
-AdminArticleItem = React.createClass({
+AdminPostsArticleItem = React.createClass({
   propTypes: {
     article: React.PropTypes.object.isRequired
   },
@@ -26,18 +26,23 @@ AdminArticleItem = React.createClass({
 
   render() {
     const title = this.props.article.title;
+    const author = this.props.article.username;
     const submitted = moment(this.props.article.submitted).format("MMM Do YY");
+    const articleURL = "/article/" + this.props.article.slug;
     const editArticleURL = "/article/edit/" + this.props.article.slug;
+    const deleteButtonStyle = {
+      color: '#D9534F'
+    };
 
     return (
       <tr>
-        <td className="text-left text-middle">{title}{this.data.isDraft ? <label className="btn btn-sm btn-warning pull-right">Draft</label> : "" }</td>
+        <td className="text-left text-middle">{title}{this.data.isDraft ? <strong> - Draft</strong> : "" }<small> - <a href={articleURL}>View</a> - <a href={editArticleURL}>Edit</a> - <a style={deleteButtonStyle} onClick={this.deleteArticle}>Delete</a></small></td>
+        <td>{author}</td>
         <td>{submitted}</td>
-        <td>
-          <a href={editArticleURL}><button className="btn btn-info"><i className="fa fa-pencil"></i></button></a>
-          <button onClick={this.deleteArticle} className="delete-article btn btn-danger"><i className="fa fa-times"></i></button>
-        </td>
       </tr>
     );
   }
 });
+
+{/* <a href={editArticleURL}><button className="btn btn-info"><i className="fa fa-pencil"></i></button></a>
+<button onClick={this.deleteArticle} className="delete-article btn btn-danger"><i className="fa fa-times"></i></button> */}

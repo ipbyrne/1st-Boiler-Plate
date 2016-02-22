@@ -1,13 +1,21 @@
-FindFromPublication.publish("users", function (userSearchKeyword, limit) {
+FindFromPublication.publish("users", function (userSearchKeyword, limit, skipCount) {
 		// Publish Collection Count
 		Counts.publish(this, 'users', Meteor.users.find(), { noReady: true });
+
+		var positiveIntegerCheck = Match.Where(function(x) {
+	    check(x, Match.Integer);
+	    return x >= 0;
+	  });
+	  check(skipCount, positiveIntegerCheck);
+
 		userSearchQuery = new RegExp( userSearchKeyword, 'i' );
     return Meteor.users.find({
 			$or: [
 				{"emails.address": userSearchQuery}
 			]
 		}, {
-			limit: limit
+			limit: limit,
+			skip: skipCount
 		});
 });
 
@@ -28,7 +36,7 @@ FindFromPublication.publish("articles", function (articleSearchKeyword, limit, s
 			{_id: articleSearchQuery},
 			{title: articleSearchQuery},
 			{submitted: articleSearchQuery},
-			{useremail: articleSearchQuery}
+			{username: articleSearchQuery}
 		]
 	}, {
 		limit:limit,
@@ -39,6 +47,26 @@ FindFromPublication.publish("article", function (slug) {
 	return Articles.find({slug: slug});
 });
 
-FindFromPublication.publish("comments", function(limit) {
-	return Comments.find({},{limit: limit});
+FindFromPublication.publish("comments", function(commentSearchKeyword, limit, skipCount) {
+	Counts.publish(this, 'comments', Comments.find(), { noReady: true });
+	var positiveIntegerCheck = Match.Where(function(x) {
+    check(x, Match.Integer);
+    return x >= 0;
+  });
+  check(skipCount, positiveIntegerCheck);
+
+	commentSearchQuery = new RegExp( commentSearchKeyword, 'i' );
+
+	return Comments.find({
+		$or: [
+			{body: commentSearchQuery},
+			{_id: commentSearchQuery},
+			{articleId: commentSearchQuery},
+			{submitted: commentSearchQuery},
+			{username: commentSearchQuery}
+		]
+	},{
+		limit: limit,
+		skip: skipCount
+	});
 });

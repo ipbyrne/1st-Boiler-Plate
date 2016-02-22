@@ -5,8 +5,9 @@ ArticlePage = React.createClass({
     var slug = this.props.articleSlug;
     var isYours = false;
     Tracker.autorun(function (){
+      articlesHandle2 = Meteor.subscribe("articles", "", 10, 0);
       articlesHandle = Meteor.subscribe("article", slug);
-      commentsHandle = Meteor.subscribe("comments");
+      commentsHandle = Meteor.subscribe("comments", "", 10, 0);
       article = Articles.findOne({slug:slug});
     });
 
@@ -79,6 +80,8 @@ ArticlePage = React.createClass({
 		var comment = {
 			body: commentBody,
 			articleId: this.data.article._id,
+      articleSlug: this.data.article.slug,
+      articleTitle: this.data.article.title,
 			submitted: new Date(),
 			likes: 0,
 			likers: [],

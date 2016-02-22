@@ -50,20 +50,9 @@ Navbar = React.createClass({
     					<ul className="nav navbar-nav">
     						<li><a href="/">Index</a></li>
     						<li><a href="/articles">Articles</a></li>
-                {this.data.isAdmin ?
-    						  <li><a href="/dashboard">Dashboard</a></li>
-                :
-                  ""
-                }
     					</ul>
     					<ul className="nav navbar-nav navbar-right">
-    						<li className="dropdown">
-    							<a href="#" className="dropdown-toggle" data-toggle="dropdown">{this.data.username}<span className="caret"></span></a>
-    							<ul className="dropdown-menu" role="menu">
-    								<li><a href="/change-password">Change Password</a></li>
-    								<li className="logout" onClick={this.logOut}><a href="/">Logout</a></li>
-    							</ul>
-    						</li>
+    						<li><a href="/admin/dashboard">Dashboard</a></li>
     					</ul>
     				</div>
           :

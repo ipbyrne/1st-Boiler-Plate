@@ -46,15 +46,44 @@ FlowRouter.route('/submit-article', {
   }
 });
 // Edit Article Page
-FlowRouter.route('/articles/edit/:slug', {
+FlowRouter.route('/article/edit/:slug', {
   action(params, queryParams) {
     ReactLayout.render(ArticleEditPage, {articleSlug: params.slug});
   }
 });
-// Admin Dashboard Page
-FlowRouter.route('/dashboard', {
+// Admin Dashboard Routes
+// Dashboard Page
+FlowRouter.route('/admin/dashboard', {
   action() {
-    ReactLayout.render(AdminDashboard);
+    if(Meteor.user().profile.role === "Admin") {
+      ReactLayout.render(AdminDashboard);
+    } else {
+      ReactLayout.render(AdminProfile);
+    }
+  }
+});
+// Posts Page
+FlowRouter.route('/admin/posts/:page?', {
+  action(params, queryParams) {
+    ReactLayout.render(AdminPosts, {page: params.page});
+  }
+});
+// Comments Page
+FlowRouter.route('/admin/comments/:page?', {
+  action(params, queryParams) {
+    ReactLayout.render(AdminComments, {page: params.page});
+  }
+});
+// Users Page
+FlowRouter.route('/admin/users/:page?', {
+  action(params, queryParams) {
+    ReactLayout.render(AdminUsers, {page: params.page});
+  }
+});
+// Profile Page
+FlowRouter.route('/admin/profile', {
+  action() {
+    ReactLayout.render(AdminProfile);
   }
 });
 // 404 Route error

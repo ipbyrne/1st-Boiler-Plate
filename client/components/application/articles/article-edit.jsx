@@ -21,6 +21,10 @@ ArticleEditPage = React.createClass({
     });
   },
 
+  renderNavbar () {
+    return <AdminNavbar />;
+  },
+
   handlePublishSubmit(event) {
     event.preventDefault();
 
@@ -89,31 +93,36 @@ ArticleEditPage = React.createClass({
     DocHead.setTitle(SEOtitle);
 
     return (
-      <div className="row">
-    		{this.data.currentUser ?
-          <form className="form-group">
-      			<div className="col-xs-12">
-      				<label>Title</label>
-      				<input onChange={function() {}} type="text" name="title" ref="title" className="form-control" placeholder={title}/>
-      				<br/>
-      				<label>Body</label>
-      				<div ref="summernote" id="summernote" ref="body" className="body"><Markdown>{body}</Markdown></div>
-      				<br/>
-      				<br/>
-      				<label>Thumbnail URL</label>
-      				<input type="text" name="thumbnail" ref="thumbnailURL" className="form-control" placeholder={thumbnailURL}/>
-      			</div>
-      			<div className="col-xs-12 text-right">
-      				<br/>
-      				<button onClick={this.handleSaveSubmit} className="btn save btn-info">Save as Draft</button>
-      				<button onClick={this.handlePublishSubmit} className="btn submit btn-primary">Publish</button>
-      			</div>
-          </form>
-    		:
-          <div className="col-xs-12">
-    			     <h1>Whoops, you must be <a href="/sign-in">Logged In</a> to do this!</h1>
+      <div>
+        {this.renderNavbar()}
+        <div id="adminContentContainer">
+          <div className="row">
+        		{this.data.currentUser ?
+              <form className="form-group">
+          			<div className="col-xs-12">
+          				<label>Title</label>
+          				<input onChange={function() {}} type="text" name="title" ref="title" className="form-control" placeholder={title}/>
+          				<br/>
+          				<label>Body</label>
+          				<div ref="summernote" id="summernote" ref="body" className="body"><Markdown>{body}</Markdown></div>
+          				<br/>
+          				<br/>
+          				<label>Thumbnail URL</label>
+          				<input type="text" name="thumbnail" ref="thumbnailURL" className="form-control" placeholder={thumbnailURL}/>
+          			</div>
+          			<div className="col-xs-12 text-right">
+          				<br/>
+          				<button onClick={this.handleSaveSubmit} className="btn save btn-info">Save as Draft</button>
+          				<button onClick={this.handlePublishSubmit} className="btn submit btn-primary">Publish</button>
+          			</div>
+              </form>
+        		:
+              <div className="col-xs-12">
+        			     <h1>Whoops, you must be <a href="/sign-in">Logged In</a> to do this!</h1>
+              </div>
+        		}
           </div>
-    		}
+        </div>
       </div>
     );
 

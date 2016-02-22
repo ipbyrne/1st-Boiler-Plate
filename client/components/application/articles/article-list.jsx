@@ -15,7 +15,7 @@ ArticleList = React.createClass({
       loading: ! articlesHandle.ready(),
       currentUser: Meteor.user(),
       articles: Articles.findFromPublication("articles", {draft:false},{sort: {submitted: -1}}).fetch(),
-      prevPageClass: currentPage >= Counts.get('articles')/recordsPerPage ? "" : "disabled",
+      prevPageClass: currentPage != 1 ? "" : "disabled",
       nextPageClass: currentPage < Counts.get('articles')/recordsPerPage ? "" : "disabled"
     };
   },
@@ -37,7 +37,7 @@ ArticleList = React.createClass({
   prevPage() {
     var recordsPerPage = 1;
     var currentPage = parseInt(this.props.page) || 1;
-    if(currentPage >= Counts.get('articles')/recordsPerPage) {
+    if(currentPage != 1) {
       FlowRouter.go("/articles/" + (currentPage - 1));
     }
   },

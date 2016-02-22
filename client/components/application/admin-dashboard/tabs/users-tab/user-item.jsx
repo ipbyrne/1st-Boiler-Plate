@@ -15,7 +15,8 @@ AdminUserItem = React.createClass({
     };
   },
 
-  deleteUser() {
+  deleteUser(event) {
+    event.preventDefault();
     if(confirm('Are you sure?')) {
 			Meteor.call('deleteUser', this.props.user._id, function(error) {
         if(error) {
@@ -51,19 +52,19 @@ AdminUserItem = React.createClass({
     const userModalID = "edit-user-modal" + this.props.user._id;
     const userEmailID = "email" + this.props.user._id;
     const userNameID = "name" + this.props.user._id;
+    const deleteButtonStyle = {
+      color: '#D9534F'
+    };
 
     return (
       <tr>
-        <td className="text-left text-middle">{email}{this.data.isYours ? <label className="btn btn-sm btn-warning pull-right">You!</label>: "" }</td>
+        <td>{name}</td>
+        <td className="text-left text-middle">{email}{this.data.isYours ? <label className="btn btn-sm btn-warning pull-right">You!</label>: "" }<small> - <a data-toggle="modal" data-target={dataTarget}>Edit</a> - <a style={deleteButtonStyle} onClick={this.deleteUser}>Delete</a></small></td>
         <td>
           <select onChange={this.updateUserRole} name="userRole" id={userOptionClass} className="form-control" value={userRole} >
             <option value="Admin">Admin</option>
             <option value="Member">Member</option>
           </select>
-        </td>
-        <td>
-          <button className="btn btn-info" data-toggle="modal" data-target={dataTarget}><i className="fa fa-pencil"></i></button>
-          <button onClick={this.deleteUser} className="delete-user btn btn-danger"><i className="fa fa-times"></i></button>
         </td>
       </tr>
     );
