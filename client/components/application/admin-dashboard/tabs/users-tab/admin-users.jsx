@@ -32,7 +32,7 @@ AdminUsers = React.createClass({
   },
 
   renderNavbar () {
-    return <AdminNavbar />;
+    return <AdminNavbar href="/admin/users"/>;
   },
 
   renderUsers() {

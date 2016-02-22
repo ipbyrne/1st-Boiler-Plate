@@ -1,13 +1,12 @@
-AdminComments = React.createClass({
+AdminMessages = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
     var currentPage = parseInt(this.props.page) || 1;
     var recordsPerPage = 1;
     Tracker.autorun(function (){
-      commentSearchkeyword = Session.get('comment-search-query');
       var skipCount = (currentPage - 1) * recordsPerPage; // 1 records per page
-      commentsHandle = Meteor.subscribeWithPagination("comments", commentSearchkeyword, recordsPerPage, skipCount);
+      messagesHandle = Meteor.subscribeWithPagination("contact-messages", recordsPerPage, skipCount);
     });
 
     // Check for Admin User
@@ -24,32 +23,28 @@ AdminComments = React.createClass({
     return {
       currentUser: Meteor.user(),
       isAdmin: admin,
-      comments: Comments.findFromPublication("comments",{},{sort: {submitted: -1}}).fetch(),
-      commentCount: Counts.get('comments'),
+      messages: Messages.findFromPublication("contact-messages",{},{sort: {submitted: -1}}).fetch(),
+      messageCount: Counts.get('contact-messages'),
       prevPageClass: currentPage != 1 ? "" : "disabled",
-      nextPageClass: currentPage < Counts.get('comments')/recordsPerPage ? "" : "disabled"
+      nextPageClass: currentPage < Counts.get('contact-messages')/recordsPerPage ? "" : "disabled"
     };
   },
 
   renderNavbar () {
-    return <AdminNavbar href="/admin/comments" />;
+    return <AdminNavbar href="/admin/messages"/>;
   },
 
-  renderComments() {
-    return this.data.comments.map((comment) => {
-      return <AdminCommentsCommentItem key={comment._id} comment={comment}/>;
+  renderMessages() {
+    return this.data.messages.map((message) => {
+      return <AdminMessagesMessageItem key={message._id} message={message}/>;
     });
-  },
-
-  updateCommentSearch() {
-    Session.set("comment-search-query", $('.search-bar2').val());
   },
 
   nextPage() {
     var recordsPerPage = 1;
     var currentPage = parseInt(this.props.page) || 1;
-    if(currentPage < Counts.get('comments')/recordsPerPage) {
-      FlowRouter.go("/admin/comments/" + (currentPage + 1));
+    if(currentPage < Counts.get('contact-messages')/recordsPerPage) {
+      FlowRouter.go("/admin/messages/" + (currentPage + 1));
     }
   },
 
@@ -57,7 +52,7 @@ AdminComments = React.createClass({
     var recordsPerPage = 1;
     var currentPage = parseInt(this.props.page) || 1;
     if(currentPage != 1) {
-      FlowRouter.go("/admin/comments/" + (currentPage - 1));
+      FlowRouter.go("/admin/messages/" + (currentPage - 1));
     }
   },
 
@@ -77,12 +72,17 @@ AdminComments = React.createClass({
           <div className="row">
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h4>Comments ({this.data.commentCount})</h4>
+                <h4>Messages ({this.data.messageCount})</h4>
               </div>
               <div className="panel-body">
                 <div className="col-md-12">
-            			<div className="col-md-12">
-            				<input onKeyUp={this.updateCommentSearch} type="text" name="searchbar" className="search-bar2 fa form-control" placeholder="&#xF002;    Search Comments" />
+            			<div className="col-md-9">
+            				<input onKeyUp={this.updateArticleSearch} type="text" name="searchbar" className="search-bar2 fa form-control" placeholder="&#xF002;    Search Articles" />
+            				<br/>
+            				<br/>
+            			</div>
+            			<div className="col-md-3 text-center">
+            				<a href="/submit-article"><button className="btn btn-success">Add an Article</button></a>
             				<br/>
             				<br/>
             			</div>
@@ -90,14 +90,13 @@ AdminComments = React.createClass({
             				<table className="table table-bordered">
             					<thead>
             						<tr>
+            							<th>Article Title</th>
             							<th>Author</th>
-            							<th>Comment</th>
-                          <th>Response To</th>
             							<th>Date</th>
             						</tr>
             					</thead>
             					<tbody>
-            						{this.renderComments()}
+            						{this.renderMessages()}
             					</tbody>
             				</table>
             				<br/>

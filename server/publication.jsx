@@ -70,3 +70,14 @@ FindFromPublication.publish("comments", function(commentSearchKeyword, limit, sk
 		skip: skipCount
 	});
 });
+
+FindFromPublication.publish("contact-messages", function(limit, skipCount) {
+		Counts.publish(this, 'contact-messages', Messages.find(), { noReady: true });
+    return Messages.find({},{
+			limit: limit,
+			skip: skipCount
+		});
+});
+FindFromPublication.publish("contact-message", function (id) {
+	return Messages.find(id);
+});

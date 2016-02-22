@@ -1,7 +1,7 @@
 AdminProfile = React.createClass({
 
   renderNavbar () {
-    return <AdminNavbar />;
+    return <AdminNavbar href="/admin/profile"/>;
   },
 
   handleSubmit(event) {

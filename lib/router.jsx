@@ -4,6 +4,12 @@ FlowRouter.route('/', {
     ReactLayout.render(Homepage);
   }
 });
+// Contact Page
+FlowRouter.route('/contact', {
+  action() {
+    ReactLayout.render(ContactPage);
+  }
+});
 // Sign Up Page
 FlowRouter.route('/sign-up', {
   action() {
@@ -78,6 +84,18 @@ FlowRouter.route('/admin/comments/:page?', {
 FlowRouter.route('/admin/users/:page?', {
   action(params, queryParams) {
     ReactLayout.render(AdminUsers, {page: params.page});
+  }
+});
+// Messages Page
+FlowRouter.route('/admin/messages/:page?', {
+  action(params, queryParams) {
+    ReactLayout.render(AdminMessages, {page: params.page});
+  }
+});
+// Message Page
+FlowRouter.route('/admin/message/:_id', {
+  action(params, queryParams) {
+    ReactLayout.render(AdminMessagePage, {messageId: params._id});
   }
 });
 // Profile Page

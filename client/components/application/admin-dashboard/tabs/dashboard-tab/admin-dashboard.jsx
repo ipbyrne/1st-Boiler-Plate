@@ -7,6 +7,7 @@ AdminDashboard = React.createClass({
       commentSearchkeyword = Session.get('comment-search-query');
     	articlesHandle = Meteor.subscribeWithPagination("articles", articleSearchkeyword, 2, 0);
       commentsHandle = Meteor.subscribeWithPagination("comments", commentSearchkeyword, 2, 0);
+      messagesHandle = Meteor.subscribeWithPagination("contact-messages");
       usersHandle = Meteor.subscribeWithPagination('users', "", 2, 0);
     });
 
@@ -28,12 +29,13 @@ AdminDashboard = React.createClass({
       articleCount: Counts.get('articles'),
       comments: Comments.findFromPublication("comments",{},{sort: {submitted: -1}}).fetch(),
       commentCount: Counts.get('comments'),
-      userCount: Counts.get('users')
+      userCount: Counts.get('users'),
+      messageCount: Counts.get('contact-messages')
     };
   },
 
   renderNavbar () {
-    return <AdminNavbar />;
+    return <AdminNavbar href="/admin/dashboard"/>;
   },
 
   renderArticles() {
@@ -68,7 +70,7 @@ AdminDashboard = React.createClass({
                     <p><strong>Posts: <a href="/admin/posts">{this.data.articleCount}</a></strong></p>
                   </div>
                   <div className="col-xs-6">
-                    <p><strong>Messages: <a href="/admin/messages">0</a></strong></p>
+                    <p><strong>Messages: <a href="/admin/messages">{this.data.messageCount}</a></strong></p>
                   </div>
                   <br/>
                   <div className="col-xs-6">

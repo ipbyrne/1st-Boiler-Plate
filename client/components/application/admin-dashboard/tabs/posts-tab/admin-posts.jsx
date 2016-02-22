@@ -32,7 +32,7 @@ AdminPosts = React.createClass({
   },
 
   renderNavbar () {
-    return <AdminNavbar />;
+    return <AdminNavbar href="/admin/posts"/>;
   },
 
   renderArticles() {

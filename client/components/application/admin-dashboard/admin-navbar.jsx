@@ -1,8 +1,25 @@
 AdminNavbar = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {
+      href: this.props.href
+    };
+  },
+
   componentWillMount() {
     // Hide regulage header
     $("header").addClass("hide");
     $("#react-root").removeClass("container");
+  },
+
+  componentDidMount() {
+    var href = this.data.href;
+    $(".menu-list ul li a").each(function(){
+      if( href == $(this).attr("href") ) {
+        $(this).parent().addClass("active");
+      }
+    });
   },
 
   componentWillUnmount() {
@@ -25,11 +42,6 @@ AdminNavbar = React.createClass({
   },
 
   render() {
-    // Set SEO
-    var SEOtitle = "Dashboard";
-    DocHead.setTitle(SEOtitle);
-
-
     if(Meteor.user().profile.role === "Admin") {
       return (
         <div>
@@ -38,7 +50,7 @@ AdminNavbar = React.createClass({
             <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
             <div className="menu-list">
               <ul id="menu-content" className="menu-content collapse out">
-                <li className="active">
+                <li>
                   <a href="/admin/dashboard">
                     <i className="fa fa-dashboard fa-lg"></i> Dashboard
                   </a>
@@ -59,6 +71,12 @@ AdminNavbar = React.createClass({
                 <li>
                   <a href="/admin/users">
                     <i className="fa fa-users fa-lg"></i> Users
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/admin/messages">
+                    <i className="fa fa-envelope fa-lg"></i> Messages
                   </a>
                 </li>
 
@@ -107,7 +125,7 @@ AdminNavbar = React.createClass({
               </ul>
             </div>
           </div>
-          
+
           <div id="adminContentNavContainer">
             <div className="pull-right">
               <h2 className="adminNav"><a href="/"><i className="fa fa-home"></i></a></h2>

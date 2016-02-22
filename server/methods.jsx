@@ -104,5 +104,29 @@ Meteor.methods({
 	},
 	deleteComment: function(commentId) {
 		Comments.remove({_id: commentId});
-	}
+	},
+  // Message Methods
+  insertMessage: function(message) {
+    Messages.insert(message);
+  },
+  openMessage: function(messageId) {
+    Messages.update({_id: messageId}, {$set: {new: false}});
+  },
+  deleteMessage: function(messageId) {
+    Messages.remove({_id:messageId});
+  },
+  sendEmail: function(to, from, subject, message) {
+    check([to, from, subject, message], [String]);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      text: message
+    });
+  }
 });
