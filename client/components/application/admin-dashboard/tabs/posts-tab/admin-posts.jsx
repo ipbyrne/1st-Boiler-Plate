@@ -24,7 +24,7 @@ AdminPosts = React.createClass({
     return {
       currentUser: Meteor.user(),
       isAdmin: admin,
-      articles: Articles.findFromPublication("articles",{draft: false},{sort: {submitted: -1}}).fetch(),
+      articles: Articles.findFromPublication("articles",{},{sort: {submitted: -1}}).fetch(),
       articleCount: Counts.get('articles'),
       prevPageClass: currentPage != 1 ? "" : "disabled",
       nextPageClass: currentPage < Counts.get('articles')/recordsPerPage ? "" : "disabled"
